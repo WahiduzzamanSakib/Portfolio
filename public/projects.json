@@ -1,0 +1,208 @@
+[
+  {
+    "id": 1,
+    "title": "Property Rental & Booking Platform",
+    "desc": "Quick Rent - A rental platform with property listings, bookings, payments, favorites, reviews, authentication, and admin management.",
+    "image": "https://i.ibb.co/xKL3K7nd/Quick-Rent.png",
+    "tags": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express.js",
+      "JWT",
+      "Authentication",
+      "Stripe",
+      "Responsive Design"
+    ],
+    "features": [
+      "Complete Rental Marketplace: Tenants can explore, book, and pay for properties while owners can manage listings and bookings easily.",
+      "Secure Role-Based System: JWT authentication with separate access control and dashboards for Tenant, Owner, and Admin users",
+      "Complete Booking Workflow: Includes property approval, booking management, Stripe payment integration, transactions, and review system.",
+      "Stripe Payment Integration"
+    ],
+    "challenges": [
+      "Implementing a secure role-based authentication system with different access permissions for Tenant, Owner, and Admin users.",
+      "Managing complex booking workflows including property approval, payments, transactions, and review handling.",
+      "Integrating Stripe payment functionality while ensuring secure transaction processing and smooth user experience."
+    ],
+    "futurePlans": [
+      "Add advanced property recommendation features using AI-based suggestions.",
+      "Implement real-time chat between property owners and tenants.",
+      "Introduce location-based search with interactive maps and advanced filtering."
+    ],
+    "clientRepo": "https://github.com/WahiduzzamanSakib/Quick-Rent",
+    "serverRepo": "https://github.com/WahiduzzamanSakib/Quick-Rent-Server",
+    "live": "https://quick-rent-ecru.vercel.app"
+  },
+  {
+    "id": 2,
+    "title": "Pet Adoption Platform",
+    "desc": "Pet Adoption Platform is a responsive web application built using React.js and Next.js. It allows users to browse and adopt pets from a list of available pets.",
+    "image": "https://i.ibb.co/LDT47cKW/Pet-Adoption.png",
+    "tags": [
+      "MongoDB",
+      "Express.js",
+      "Next.js",
+      "JWT",
+      "Authentication",
+      "Tailwind CSS",
+      "Responsive Design",
+      "Dashboard",
+      "API Integration"
+    ],
+    "features": [
+      "Secure authentication with JWT, HTTP-only cookies, and protected routes.",
+      "Browse pets with search and filtering functionality.",
+      "Interactive adoption request system with user dashboard.",
+      "Pet owner dashboard for managing pet listings and adoption requests.",
+      "Responsive UI with Next.js, Tailwind CSS, dark/light theme, and smooth animations."
+    ],
+    "challenges": [
+      "Building a secure adoption request workflow with proper authorization and protected dashboard access.",
+      "Implementing efficient search and filtering features for a large number of pet listings.",
+      "Managing user, pet owner, and adoption-related data synchronization across the application."
+    ],
+    "futurePlans": [
+      "Add online donation and sponsorship features for pets.",
+      "Integrate AI-based pet matching recommendations based on user preferences.",
+      "Add real-time messaging between adopters and pet owners."
+    ],
+    "clientRepo": "https://github.com/WahiduzzamanSakib/pet-adoption-platform",
+    "serverRepo": "https://github.com/WahiduzzamanSakib/pet-adoption-platform-server",
+    "live": "https://pet-adoption-platform-flax.vercel.app"
+  },
+  {
+    "id": 3,
+    "title": "Summer Essentials Store",
+    "desc": "Modern e-commerce application built with Next.js featuring authentication, protected routes, dynamic product listing, user profile management, and responsive UI",
+    "image": "https://i.ibb.co.com/tMW7THxY/sun-cart.png",
+    "tags": [
+      "Next.js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Authentication",
+      "E-commerce"
+    ],
+    "features": [
+      "Full authentication system via BetterAuth supporting Email/Password, Google, and GitHub logins",
+      "Dynamic product listing driven by JSON data, featuring a Popular Products section and protected detail views.",
+      "Dedicated user profile page allowing logged-in users to view and update their profile details in real time",
+      "Fully responsive design built on Next.js App Router, Tailwind CSS, and HeroUI."
+    ],
+    "challenges": [
+      "Implementing a complete authentication system with multiple login providers using BetterAuth.",
+      "Creating protected product detail pages and managing user profile updates securely.",
+      "Designing a responsive e-commerce interface that works smoothly across all devices."
+    ],
+    "futurePlans": [
+      "Add shopping cart and complete checkout functionality with payment integration.",
+      "Implement product reviews, ratings, and wishlist features.",
+      "Add an admin dashboard for product and user management."
+    ],
+    "clientRepo": "https://github.com/WahiduzzamanSakib/sun-cart",
+    "serverRepo": null,
+    "live": "https://sun-cart-plum.vercel.app"
+  },
+  {
+    "id": 4,
+    "title": "Weather App",
+    "desc": "A modern and responsive weather application built with React, Vite, and Tailwind CSS. Users can search weather by city, view current conditions, hourly and 7-day forecasts, or get weather for their current location using the Browser Geolocation API. Powered by the Open-Meteo API.",
+    "image": "https://i.ibb.co.com/n8101GHH/weather.png",
+    "tags": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "JavaScript",
+      "Open-Meteo API",
+      "Geolocation API",
+      "API Integration",
+      "Responsive Design",
+      "React Hooks"
+    ],
+    "features": [
+      "Real-time weather information with temperature, humidity, wind speed, pressure, feels like temperature, and weather conditions.",
+      "Search weather by city name with accurate location-based results and error handling for invalid searches.",
+      "Detailed weather forecasts including 24-hour hourly forecast and 7-day daily forecast.",
+      "Current location weather detection using Browser Geolocation API with automatic timezone support."
+    ],
+    "challenges": [
+      "Handling API integration and displaying accurate weather data from external services.",
+      "Implementing browser geolocation functionality with proper permission handling.",
+      "Managing different weather states, loading conditions, and error scenarios efficiently."
+    ],
+    "futurePlans": [
+      "Add weather alerts and notification features for severe conditions.",
+      "Implement weather history tracking and personalized forecasts.",
+      "Add weather map visualization with interactive location data."
+    ],
+    "clientRepo": "https://github.com/WahiduzzamanSakib/Weather-App",
+    "serverRepo": null,
+    "live": "https://wahid-weather.netlify.app"
+  },
+  {
+    "id": 5,
+    "title": "Digital Tools Buying Website",
+    "desc": "React shopping cart app with real-time cart updates and checkout.",
+    "image": "https://i.ibb.co.com/jv15pZLQ/s.png",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "DaisyUI",
+      "Shopping Cart",
+      "UI/UX"
+    ],
+    "features": [
+      "Interactive Shopping Cart – Click a product to add it automatically to the cart.",
+      "Proceed to Checkout – Clears the cart for a seamless checkout experience.",
+      "Dynamic Navbar Count – The cart count updates in real-time when products are added.",
+      "Buy Now Feedback – Clicking “Buy Now” displays an Added to cart toast notification."
+    ],
+    "challenges": [
+      "Managing real-time cart updates and maintaining accurate product state across components.",
+      "Creating a smooth checkout flow with proper user feedback interactions.",
+      "Building a responsive shopping interface with reusable React components."
+    ],
+    "futurePlans": [
+      "Add backend integration for product and order management.",
+      "Implement user authentication and order history features.",
+      "Integrate online payment gateway for real purchases."
+    ],
+    "clientRepo": "https://github.com/WahiduzzamanSakib/Assignment-06",
+    "serverRepo": null,
+    "live": "https://zesty-strudel-c8069a.netlify.app"
+  },
+  {
+    "id": 6,
+    "title": "Keep Your Friendships Alive",
+    "desc": "React app for managing and viewing meaningful personal connections.",
+    "image": "https://i.ibb.co.com/hxt6SRK9/Gemini-Generated-Image-szbst6szbst6szbs.png",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Component-Based",
+      "State Management",
+      "Netlify"
+    ],
+    "features": [
+      "Component-based architecture – The UI is structured into reusable React components, ensuring better organization, scalability, and maintainability.",
+      "Interactive user interface – Uses React state and event handling to create a dynamic and responsive user experience.",
+      "Live deployment – Hosted on Netlify for fast and reliable access from any device or browser.",
+      "Strengthening debugging and problem-solving skills in React development"
+    ],
+    "challenges": [
+      "Designing reusable React components while maintaining clean and scalable project structure.",
+      "Managing application state and user interactions efficiently.",
+      "Creating an engaging user interface that provides a smooth experience."
+    ],
+    "futurePlans": [
+      "Add user authentication and personal friendship profiles.",
+      "Implement cloud database storage for saving user connections.",
+      "Add reminders and notification features to maintain friendships."
+    ],
+    "clientRepo": "https://github.com/WahiduzzamanSakib/Assignment-07",
+    "serverRepo": null,
+    "live": "https://cosmic-mandazi-95ced2.netlify.app"
+  }
+]
