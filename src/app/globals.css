@@ -1,3 +1,345 @@
 @import "tailwindcss";
+@import "@heroui/styles"; 
 
 
+/*  Tack ANIMATIONS */
+.tech-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+.tech-track {
+  display: flex;
+  width: max-content;
+  animation: techScroll 45s linear infinite;
+}
+.tech-set {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 24px 20px;
+  flex-shrink: 0;
+}
+/* Pause when mouse is over the entire marquee */
+.tech-marquee:hover .tech-track {
+  animation-play-state: paused;
+}
+/* Infinite horizontal movement */
+@keyframes techScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* Background glow animations */
+.tech-glow-left {
+  animation: techGlowLeft 12s ease-in-out infinite;
+}
+.tech-glow-right {
+  animation: techGlowRight 15s ease-in-out infinite;
+}
+@keyframes techGlowLeft {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(80px, -40px);
+  }
+}
+@keyframes techGlowRight {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-60px, 50px);
+  }
+}
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .tech-track,
+  .tech-glow-left,
+  .tech-glow-right {
+    animation: none;
+  }
+}
+
+
+
+/*  HERO ANIMATIONS */
+/*  BACKGROUND GLOW */
+.hero-glow-left {
+  animation: heroGlowLeft 14s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-glow-right {
+  animation: heroGlowRight 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Left Glow Movement */
+@keyframes heroGlowLeft {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(50px, -25px);
+  }
+}
+
+/* Right Glow Movement */
+@keyframes heroGlowRight {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-40px, 30px);
+  }
+}
+
+
+/*  HERO CONTENT ENTRANCE= */
+.hero-fade-up {
+  opacity: 0;
+  animation: heroFadeUp 0.5s ease-out forwards;
+}
+
+/* Animation delays */
+.hero-delay-1 {
+  animation-delay: 0s;
+}
+.hero-delay-2 {
+  animation-delay: 0.1s;
+}
+.hero-delay-3 {
+  animation-delay: 0.2s;
+}
+.hero-delay-4 {
+  animation-delay: 0.3s;
+}
+.hero-delay-5 {
+  animation-delay: 0.4s;
+}
+.hero-delay-6 {
+  animation-delay: 0.55s;
+}
+
+
+/* Fade Up */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*  AVAILABLE BADGE*/
+.hero-badge {
+  opacity: 0;
+  animation: heroBadgeIn 0.6s ease-out 0.5s forwards;
+}
+
+
+/* Mobile badge */
+@keyframes heroBadgeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* PROFILE ENTRANCE */
+.hero-profile {
+  opacity: 0;
+  animation: heroProfileIn 0.8s ease-out 0s forwards;
+}
+
+
+@keyframes heroProfileIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/*  DESKTOP BADGE */
+
+@media (min-width: 768px) {
+  .hero-badge {
+    animation-name: heroBadgeDesktopIn;
+  }
+
+  @keyframes heroBadgeDesktopIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow-left,
+  .hero-glow-right,
+  .hero-fade-up,
+  .hero-badge,
+  .hero-profile {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/*  ABOUT SECTION ANIMATIONS */
+.about-animate {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.about-heading {
+  animation: aboutHeadingIn 0.6s ease-out forwards;
+}
+
+.about-image {
+  animation: aboutImageIn 0.7s ease-out 0.05s forwards;
+}
+
+.about-content {
+  animation: aboutContentIn 0.7s ease-out 0.15s forwards;
+}
+
+/*  KEYFRAMES */
+@keyframes aboutHeadingIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes aboutContentIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*  FLOATING REACT BADGE  */
+.about-react-badge {
+  animation: reactBadgeFloat 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes reactBadgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/*  FLOATING NEXT BADGE */
+.about-next-badge {
+  animation: nextBadgeFloat 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes nextBadgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/*  READ MORE Framer Motion replacement */
+.about-read-more {
+  animation: aboutReadMore 0.35s ease-out forwards;
+  overflow: hidden;
+}
+
+@keyframes aboutReadMore {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    max-height: 300px;
+    transform: translateY(0);
+  }
+}
+
+/*  MOBILE */
+@media (max-width: 767px) {
+  .about-image {
+    animation-delay: 0.05s;
+  }
+  .about-content {
+    animation-delay: 0.1s;
+  }
+}
+
+/*  REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .about-animate,
+  .about-react-badge,
+  .about-next-badge,
+  .about-read-more {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
