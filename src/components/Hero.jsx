@@ -96,10 +96,10 @@ const Hero = () => {
       <div className="pointer-events-none absolute inset-0 opacity-[0.025] dark:opacity-[0.035] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
 
       {/* Top Fade */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/80 to-transparent dark:from-slate-950/80"/>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/80 to-transparent dark:from-slate-950/80" />
 
       {/* Bottom Fade */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950"/>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
 
       {/* MAIN CONTENT */}
       <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-16 lg:flex-row lg:gap-20">
@@ -127,7 +127,7 @@ const Hero = () => {
 
             <span className="mr-2">I&apos;m a</span>
 
-            <span className=" bg-gradient-to-rfrom-cyan-500 via-blue-500 to-indigo-500 bg-clip-text font-mono font-bold text-transparent">
+            <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text font-mono font-bold text-transparent">
               <TypeWriter />
             </span>
           </h2>
