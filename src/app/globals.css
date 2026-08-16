@@ -225,15 +225,15 @@
   will-change: transform, opacity;
 }
 
-.about-heading {
+.about-visible .about-heading {
   animation: aboutHeadingIn 0.6s ease-out forwards;
 }
 
-.about-image {
+.about-visible .about-image {
   animation: aboutImageIn 0.7s ease-out 0.05s forwards;
 }
 
-.about-content {
+.about-visible .about-content {
   animation: aboutContentIn 0.7s ease-out 0.15s forwards;
 }
 
