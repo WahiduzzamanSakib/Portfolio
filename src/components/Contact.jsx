@@ -1,11 +1,43 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { Suspense, lazy, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FaCheck, FaLinkedin, FaEnvelope, FaSpinner, FaPaperPlane, FaGithub, FaPhone, FaWhatsapp } from "react-icons/fa";
+import {
+  FaCheck,
+  FaLinkedin,
+  FaEnvelope,
+  FaSpinner,
+  FaPaperPlane,
+  FaGithub,
+  FaPhone,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 
-export default function Contact() {
+function ContactSkeleton() {
+  return (
+    <section className="relative isolate overflow-hidden bg-white dark:bg-slate-950 py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-8">
+        {/* Header Skeleton */}
+        <div className="flex flex-col items-center space-y-3 text-center">
+          <div className="h-10 w-64 animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800" />
+          <div className="h-4 w-80 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
+        </div>
+
+        {/* Panel Skeleton Grid */}
+        <div className="grid auto-rows-fr grid-cols-1 gap-8 lg:grid-cols-12">
+          {/* Left Panel Skeleton */}
+          <div className="h-[520px] animate-pulse rounded-3xl bg-slate-200/80 dark:bg-slate-900/80 lg:col-span-5" />
+          {/* Right Panel Skeleton */}
+          <div className="h-[520px] animate-pulse rounded-3xl bg-slate-200/80 dark:bg-slate-800/50 lg:col-span-7" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+function ContactContent() {
   const formRef = useRef(null);
 
   const [status, setStatus] = useState("idle");
@@ -73,7 +105,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Panels */}
-        <section className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 lg:px-8">
           <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
             {/* LEFT SIDE */}
             <div className="flex h-full flex-col justify-between rounded-3xl bg-[#0f0e38] p-8 text-white shadow-2xl sm:p-10 lg:col-span-5">
@@ -293,11 +325,20 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </div>
 
       {/* DIVIDER */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
     </section>
+  );
+}
+
+
+export default function Contact() {
+  return (
+    <Suspense fallback={<ContactSkeleton />}>
+      <ContactContent />
+    </Suspense>
   );
 }

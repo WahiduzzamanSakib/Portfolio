@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "quick-rent",
     "title": "Property Rental & Booking Platform",
     "desc": "Quick Rent - A rental platform with property listings, bookings, payments, favorites, reviews, authentication, and admin management.",
     "image": "https://i.ibb.co/xKL3K7nd/Quick-Rent.png",
@@ -36,7 +36,7 @@
     "live": "https://quick-rent-ecru.vercel.app"
   },
   {
-    "id": 2,
+    "id": "pet-adoption",
     "title": "Pet Adoption Platform",
     "desc": "Pet Adoption Platform is a responsive web application built using React.js and Next.js. It allows users to browse and adopt pets from a list of available pets.",
     "image": "https://i.ibb.co/LDT47cKW/Pet-Adoption.png",
@@ -73,7 +73,7 @@
     "live": "https://pet-adoption-platform-flax.vercel.app"
   },
   {
-    "id": 3,
+    "id": "sun-cart",
     "title": "Summer Essentials Store",
     "desc": "Modern e-commerce application built with Next.js featuring authentication, protected routes, dynamic product listing, user profile management, and responsive UI",
     "image": "https://i.ibb.co.com/tMW7THxY/sun-cart.png",
@@ -105,7 +105,7 @@
     "live": "https://sun-cart-plum.vercel.app"
   },
   {
-    "id": 4,
+    "id": "weather-app",
     "title": "Weather App",
     "desc": "A modern and responsive weather application built with React, Vite, and Tailwind CSS. Users can search weather by city, view current conditions, hourly and 7-day forecasts, or get weather for their current location using the Browser Geolocation API. Powered by the Open-Meteo API.",
     "image": "https://i.ibb.co.com/n8101GHH/weather.png",
@@ -141,7 +141,7 @@
     "live": "https://wahid-weather.netlify.app"
   },
   {
-    "id": 5,
+    "id": "tools-buying",
     "title": "Digital Tools Buying Website",
     "desc": "React shopping cart app with real-time cart updates and checkout.",
     "image": "https://i.ibb.co.com/jv15pZLQ/s.png",
@@ -174,7 +174,7 @@
     "live": "https://zesty-strudel-c8069a.netlify.app"
   },
   {
-    "id": 6,
+    "id": "keenKeeper",
     "title": "Keep Your Friendships Alive",
     "desc": "React app for managing and viewing meaningful personal connections.",
     "image": "https://i.ibb.co.com/hxt6SRK9/Gemini-Generated-Image-szbst6szbst6szbs.png",

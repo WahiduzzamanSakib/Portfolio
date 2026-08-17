@@ -25,9 +25,6 @@ import {
   SiNetlify,
 } from "react-icons/si";
 
-// ----------------------------------------------------
-// 1. DATA CONFIGURATION
-// ----------------------------------------------------
 const skillCategories = [
   {
     title: "Frontend Development",
@@ -81,9 +78,6 @@ const skillCategories = [
   },
 ];
 
-// ----------------------------------------------------
-// 2. ANIMATION VARIANTS
-// ----------------------------------------------------
 const containerVariants = {
   hidden: {},
   show: {
@@ -102,9 +96,6 @@ const cardVariants = {
   },
 };
 
-// ----------------------------------------------------
-// 3. SKELETON LOADER
-// ----------------------------------------------------
 function SkillsSkeleton() {
   return (
     <section className="relative overflow-hidden bg-slate-50 py-10 dark:bg-slate-900/60 sm:py-16">

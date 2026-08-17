@@ -42,6 +42,10 @@ export default function Education() {
       id="education"
       className="scroll-mt-24 relative overflow-hidden bg-slate-50 px-6 py-10 text-slate-800 transition-colors duration-500 dark:bg-slate-900/80 dark:text-slate-200 sm:py-12"
     >
+
+      <div className=" absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+      
+      
       {/* BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Soft Light Glow */}
