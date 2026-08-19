@@ -74,7 +74,7 @@ const ViewDetails = ({ project }) => {
           </h1>
 
           <Link
-            href="/projects"
+            href="#projects"
             className="mt-8 inline-flex items-center gap-2 rounded-xl bg-secondary px-7 py-3 text-white transition hover:scale-105"
           >
             <FaArrowLeft />
