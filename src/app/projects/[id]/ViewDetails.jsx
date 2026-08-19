@@ -2,14 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaExternalLinkAlt,
-  FaServer,
-  FaArrowLeft,
-  FaCheckCircle,
-} from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaServer, FaArrowLeft, FaCheckCircle } from "react-icons/fa";
+
 
 /* Reusable action button */
 const ActionButton = ({ href, icon, label, variant = "outline" }) => {
@@ -64,10 +58,8 @@ const ViewDetails = ({ project }) => {
         {/* Bottom Fade */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="relative z-10 rounded-3xl border border-gray-200 bg-white/70 p-10 text-center shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5"
+        <div
+          className="not-found-card relative z-10 rounded-3xl border border-gray-200 bg-white/70 p-10 text-center shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5"
         >
           <h1 className="text-4xl font-bold text-primary">
             Project Not Found
@@ -80,7 +72,7 @@ const ViewDetails = ({ project }) => {
             <FaArrowLeft />
             Back To Projects
           </Link>
-        </motion.div>
+        </div>
       </section>
     );
   }
@@ -91,31 +83,13 @@ const ViewDetails = ({ project }) => {
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Animated Blue Glow */}
-        <motion.div
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -40, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute left-[-10%] top-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
+        <div
+          className="project-blue-glow absolute left-[-10%] top-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
         />
 
         {/* Animated Cyan Glow */}
-        <motion.div
-          animate={{
-            x: [0, -60, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-0 right-[-10%] h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl"
+        <div
+          className="project-cyan-glow absolute bottom-0 right-[-10%] h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl"
         />
 
         {/* Left Side Glow */}
@@ -151,11 +125,8 @@ const ViewDetails = ({ project }) => {
         </Link>
 
         {/* Main Project Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="group relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/20 bg-white/60 shadow-2xl backdrop-blur-2xl transition-all duration-500 dark:bg-white/[0.06]"
+        <div
+          className="project-main-card group relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/20 bg-white/60 shadow-2xl backdrop-blur-2xl transition-all duration-500 dark:bg-white/[0.06]"
         >
           {/* Card Glow */}
           <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-secondary to-primary opacity-0 blur-3xl transition duration-700 group-hover:opacity-20" />
@@ -189,14 +160,11 @@ const ViewDetails = ({ project }) => {
           {/* CONTENT */}
           <div className="relative p-6 md:p-8">
             {/* TITLE */}
-            <motion.h1
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="font-mono text-3xl font-black text-black dark:text-white md:text-4xl"
+            <h1
+              className="project-title font-mono text-3xl font-black text-black dark:text-white md:text-4xl"
             >
               {project?.title}
-            </motion.h1>
+            </h1>
 
             {/* DESCRIPTION */}
             <p className="mt-4 max-w-3xl text-md leading-relaxed text-gray-700 dark:text-gray-300 md:text-lg">
@@ -206,19 +174,18 @@ const ViewDetails = ({ project }) => {
             {/* TECH STACK TAGS */}
             {project?.tags?.length > 0 && (
               <div className="mt-6 flex flex-wrap gap-3">
-                {project?.tags?.map((tag, index) => (
-                  <motion.span
-                    key={`${tag}-${index}`}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                    }}
-                    className="cursor-default rounded-full border border-secondary/40 bg-secondary/10 px-4 py-1.5 text-sm font-semibold text-secondary shadow-sm transition-colors duration-300 hover:bg-secondary/20 dark:bg-secondary/20"
-                  >
-                    {tag}
-                  </motion.span>
-                ))}
+                {project?.tags?.length > 0 && (
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {project?.tags?.map((tag, index) => (
+                      <span
+                        key={`${tag}-${index}`}
+                        className="project-tag cursor-default rounded-full border border-secondary/40 bg-secondary/10 px-4 py-1.5 text-sm font-semibold text-secondary shadow-sm transition-all duration-300 hover:bg-secondary/20 dark:bg-secondary/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
@@ -270,20 +237,19 @@ const ViewDetails = ({ project }) => {
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   {project.features.map((feature, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.08 }}
-                      className="group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-green-400/30"
+                      style={{
+                        animationDelay: `${index * 0.08}s`
+                      }}
+                      className="feature-card group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-green-400/30"
                     >
                       <FaCheckCircle className="mt-1 shrink-0 text-xl text-green-500 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />
 
                       <p className="text-sm leading-relaxed text-gray-700 transition-transform duration-300 group-hover:translate-x-1 dark:text-gray-300 md:text-base">
                         {feature}
                       </p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -300,20 +266,19 @@ const ViewDetails = ({ project }) => {
 
                   <div className="space-y-5">
                     {project.challenges.map((challenge, index) => (
-                      <motion.div
+                      <div
                         key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.08 }}
-                        className="group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-red-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-red-400/30"
+                        style={{
+                          animationDelay: `${index * 0.08}s`
+                        }}
+                        className="challenge-card group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-red-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-red-400/30"
                       >
                         <FaCheckCircle className="mt-1 shrink-0 text-xl text-red-500 transition-transform duration-300 group-hover:scale-110" />
 
                         <p className="text-sm leading-relaxed text-gray-700 transition-transform duration-300 group-hover:translate-x-1 dark:text-gray-300 md:text-base">
                           {challenge}
                         </p>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -328,27 +293,26 @@ const ViewDetails = ({ project }) => {
 
                   <div className="space-y-5">
                     {project.futurePlans.map((plan, index) => (
-                      <motion.div
+                      <div
                         key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.08 }}
-                        className="group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-blue-400/30"
+                        style={{
+                          animationDelay: `${index * 0.08}s`
+                        }}
+                        className="future-card group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-blue-400/30"
                       >
                         <FaCheckCircle className="mt-1 shrink-0 text-xl text-blue-500 transition-transform duration-300 group-hover:scale-110" />
 
                         <p className="text-sm leading-relaxed text-gray-700 transition-transform duration-300 group-hover:translate-x-1 dark:text-gray-300 md:text-base">
                           {plan}
                         </p>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Section  */}

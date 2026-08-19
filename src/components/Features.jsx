@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import { FiSmartphone, FiTarget, FiZap } from "react-icons/fi";
 import { TfiRocket } from "react-icons/tfi";
 
@@ -85,11 +84,8 @@ export default function Features() {
 
           {/* CONTENT */}
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mx-auto mb-16 max-w-3xl text-center sm:mb-20"
+            <div
+              className="features-header mx-auto mb-16 max-w-3xl text-center sm:mb-20"
             >
               {/* Label */}
               <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400">
@@ -110,7 +106,7 @@ export default function Features() {
                 Creating modern, fast and user-friendly digital experiences
                 with clean design and powerful technology.
               </p>
-            </motion.div>
+            </div>
 
             {/* CARDS */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
@@ -118,13 +114,10 @@ export default function Features() {
                 const Icon = feature?.icon;
 
                 return (
-                  <motion.div
+                  <div
                     key={feature.title}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.12 }}
-                    whileHover={{ y: -8 }}
-                    className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/75 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-blue-300/70 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-950/60 dark:hover:border-blue-900/70 dark:hover:shadow-blue-500/5 sm:p-6"
+                    style={{ animationDelay: `${index * 0.12}s` }}
+                    className="features-card group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/75 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-blue-300/70 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-950/60 dark:hover:border-blue-900/70 dark:hover:shadow-blue-500/5 sm:p-6"
                   >
                     {/* Hover Background */}
                     <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/[0.07] via-transparent to-cyan-500/[0.05] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -152,7 +145,7 @@ export default function Features() {
                         {feature.desc}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>

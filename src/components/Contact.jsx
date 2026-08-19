@@ -1,7 +1,6 @@
 "use client";
 
-import React, { Suspense, lazy, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import React, { Suspense, useRef, useState } from "react";
 import {
   FaCheck,
   FaLinkedin,
@@ -291,46 +290,43 @@ function ContactContent() {
                   )}
 
                   {/* Submit Button */}
-                  <motion.button
-                    whileHover={{ scale: status === "idle" ? 1.01 : 1 }}
-                    whileTap={{ scale: status === "idle" ? 0.98 : 1 }}
+                  <button
                     disabled={status === "loading" || status === "success"}
                     type="submit"
-                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-4 font-semibold text-white shadow-md transition-all duration-300 ${
-                      status === "success"
+                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-4 font-semibold text-white shadow-md transition-all duration-300 ${status === "success"
                         ? "bg-emerald-600"
                         : "bg-[#3331b2] hover:bg-[#282693]"
-                    }`}
+                      }`}
                   >
-                    {status === "loading" && (
-                      <>
-                        <FaSpinner className="animate-spin" />
-                        Sending...
-                      </>
-                    )}
-                    {status === "success" && (
-                      <>
-                        <FaCheck />
-                        Message Sent!
-                      </>
-                    )}
-                    {status === "idle" && (
-                      <>
-                        Send Message
-                        <FaPaperPlane className="text-sm" />
-                      </>
-                    )}
-                  </motion.button>
-                </form>
-              </div>
+                  {status === "loading" && (
+                    <>
+                      <FaSpinner className="animate-spin" />
+                      Sending...
+                    </>
+                  )}
+                  {status === "success" && (
+                    <>
+                      <FaCheck />
+                      Message Sent!
+                    </>
+                  )}
+                  {status === "idle" && (
+                    <>
+                      Send Message
+                      <FaPaperPlane className="text-sm" />
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      {/* DIVIDER */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-    </section>
+      {/* DIVIDER */ }
+  <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+    </section >
   );
 }
 

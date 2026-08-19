@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import {
   FaExternalLinkAlt,
   FaChevronLeft,
@@ -39,31 +38,13 @@ const AllProjectsPage = () => {
       {/*  HERO STYLE BACKGROUND */}
 
       {/* Animated Left Glow */}
-      <motion.div
-        animate={{
-          x: [0, 80, 0],
-          y: [0, -40, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-blue-500/10 blur-3xl dark:bg-blue-500/20"
+      <div
+        className="project-blue-glow pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-blue-500/10 blur-3xl dark:bg-blue-500/20"
       />
 
       {/* Animated Right Glow */}
-      <motion.div
-        animate={{
-          x: [0, -60, 0],
-          y: [0, 50, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="pointer-events-none absolute -right-40 bottom-0 h-[450px] w-[450px] rounded-full bg-cyan-500/10 blur-3xl dark:bg-cyan-500/20"
+      <div
+        className="project-cyan-glow pointer-events-none absolute -right-40 bottom-0 h-[450px] w-[450px] rounded-full bg-cyan-500/10 blur-3xl dark:bg-cyan-500/20"
       />
 
       {/* Soft Center Glow */}
@@ -88,12 +69,8 @@ const AllProjectsPage = () => {
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 flex flex-col items-center text-center"
+        <div
+          className="project-header mb-16 flex flex-col items-center text-center"
         >
           <h2 className="font-mono text-4xl font-bold tracking-tight text-primary md:text-5xl">
             My Projects
@@ -105,19 +82,15 @@ const AllProjectsPage = () => {
           <p className="mt-4 max-w-xl text-base leading-7 text-on-surface-variant md:text-lg">
             Latest commercial projects and open source work.
           </p>
-        </motion.div>
+        </div>
 
         {/* PROJECT GRID */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {currentProjects.map((project, index) => (
-            <motion.article
+            <article
               key={project?.title}
-              initial={{opacity: 0,y: 40,}}
-              whileInView={{opacity: 1,y: 0,}}
-              viewport={{once: true,amount: 0.15,}}
-              transition={{duration: 0.5,delay: index * 0.08,}}
-              whileHover={{y: -8,}}
-              className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/60 hover:shadow-xl hover:shadow-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30 dark:hover:border-cyan-400/40"
+              style={{ animationDelay: `${index * 0.08}s` }}
+              className="project-card group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/60 hover:shadow-xl hover:shadow-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30 dark:hover:border-cyan-400/40"
             >
               {/* Card Glow */}
               <div className="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500/0 via-cyan-400/0 to-purple-500/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-blue-500/10 group-hover:via-cyan-400/10 group-hover:to-purple-500/10 group-hover:opacity-100" />
@@ -190,17 +163,14 @@ const AllProjectsPage = () => {
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 
         {/* PAGINATION */}
         {totalPages > 1 && (
-          <motion.div
-          initial={{opacity: 0,y: 20,}}
-            whileInView={{opacity: 1,y: 0,}}
-            viewport={{once: true,}}
-            className="mt-16 flex cursor-pointer items-center justify-center gap-3"
+          <div
+            className="project-pagination mt-16 flex cursor-pointer items-center justify-center gap-3"
           >
             {/* PREVIOUS */}
             <button
@@ -242,7 +212,7 @@ const AllProjectsPage = () => {
             >
               <FaChevronRight />
             </button>
-          </motion.div>
+          </div>
         )}
       </div>
 

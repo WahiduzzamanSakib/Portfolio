@@ -1,29 +1,8 @@
 "use client";
-
 import React, { Suspense, lazy } from "react";
-import { motion } from "framer-motion";
-import {
-  FaReact,
-  FaNodeJs,
-  FaGitAlt,
-  FaGithub,
-  FaFigma,
-  FaDatabase,
-  FaCode,
-  FaServer,
-} from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiTailwindcss,
-  SiJavascript,
-  SiExpress,
-  SiMongodb,
-  SiPostman,
-  SiStripe,
-  SiNpm,
-  SiVercel,
-  SiNetlify,
-} from "react-icons/si";
+import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma, FaDatabase, FaCode, FaServer } from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiPostman, SiStripe, SiNpm, SiVercel, SiNetlify } from "react-icons/si";
+
 
 const skillCategories = [
   {
@@ -78,23 +57,6 @@ const skillCategories = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
 
 function SkillsSkeleton() {
   return (
@@ -139,13 +101,7 @@ function SkillsContent() {
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* HEADER SECTION */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 sm:mb-16"
-        >
+        <div className="skills-header mb-12 sm:mb-16">
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400">
             <span className="h-2 w-2 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500/50" />
             Technologies & Tools
@@ -163,21 +119,17 @@ function SkillsContent() {
           <p className="mt-3 max-w-xl text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg">
             Technologies and tools I use to build modern, scalable and user-friendly applications.
           </p>
-        </motion.div>
+        </div>
 
         {/* CATEGORY CARDS GRID */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid gap-8 md:grid-cols-2"
-        >
+        <div className="skills-grid grid gap-8 md:grid-cols-2">
           {skillCategories.map((category, index) => (
-            <motion.div
-              variants={cardVariants}
+            <div
               key={index}
-              className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/75 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-blue-300/70 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-950/60 dark:hover:border-blue-900/70 dark:hover:shadow-blue-500/5 sm:p-8"
+              style={{
+                animationDelay: `${index * 0.15}s`
+              }}
+              className="skill-card group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/75 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-blue-300/70 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-950/60 dark:hover:border-blue-900/70 dark:hover:shadow-blue-500/5 sm:p-8"
             >
               {/* Card Hover Glow Header */}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-500/[0.04] via-transparent to-blue-500/[0.03] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -201,10 +153,9 @@ function SkillsContent() {
               {/* MINI SKILL CARDS GRID */}
               <div className="relative grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {category.skills.map((skill, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    whileHover={{ scale: 1.02 }}
-                    className="flex flex-col justify-between rounded-2xl border border-slate-200/60 bg-slate-50/70 p-4 transition-all duration-300 hover:border-cyan-500/40 hover:bg-white hover:shadow-md dark:border-slate-800/80 dark:bg-slate-900/50 dark:hover:border-cyan-500/40 dark:hover:bg-slate-900"
+                    className="mini-skill-card flex flex-col justify-between rounded-2xl border border-slate-200/60 bg-slate-50/70 p-4 transition-all duration-300 hover:border-cyan-500/40 hover:bg-white hover:shadow-md dark:border-slate-800/80 dark:bg-slate-900/50 dark:hover:border-cyan-500/40 dark:hover:bg-slate-900"
                   >
                     {/* Top Row: Icon, Name & Percentage */}
                     <div>
@@ -223,20 +174,20 @@ function SkillsContent() {
 
                     {/* Progress Bar Inside Mini Card */}
                     <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                        className="h-full rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500"
+                      <div
+                        style={{
+                          "--progress": `${skill.level}%`,
+                          animationDelay: `${i * 0.1}s`
+                        }}
+                        className="progress-bar h-full rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500"
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* SECTION DIVIDER */}
         <div className=" absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />

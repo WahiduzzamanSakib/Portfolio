@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
 import { FaGraduationCap } from "react-icons/fa";
 
 const education = [
@@ -37,10 +37,27 @@ function getProgress(startYear) {
 }
 
 export default function Education() {
+  const educationRef = useRef(null);
+  const [showAnimation, setShowAnimation] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setShowAnimation(true);
+        observer.disconnect();
+      }
+    });
+    if (educationRef.current) observer.observe(educationRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="education"
-      className="scroll-mt-24 relative overflow-hidden bg-slate-50 px-6 py-10 text-slate-800 transition-colors duration-500 dark:bg-slate-900/80 dark:text-slate-200 sm:py-12"
+      ref={educationRef}
+      className={`scroll-mt-24 relative overflow-hidden bg-slate-50 px-6 py-10 text-slate-800 transition-colors duration-500 dark:bg-slate-900/80 dark:text-slate-200 sm:py-12 ${
+        showAnimation ? "education-visible" : ""
+      }`}
     >
 
       <div className=" absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
@@ -73,12 +90,8 @@ export default function Education() {
       {/* CONTENT*/}
       <div className="relative mx-auto max-w-4xl">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          className="mb-12"
+        <div
+          className="education-header education-animate mb-12"
         >
           {/* Heading Row */}
           <div className="flex items-center gap-3">
@@ -96,7 +109,7 @@ export default function Education() {
           <p className="mt-4 max-w-lg text-sm leading-6 text-slate-500 dark:text-slate-400 sm:text-base">
             My academic journey and educational background.
           </p>
-        </motion.div>
+        </div>
 
         {/* EDUCATION ENTRIES */}
         <div className="space-y-6">
@@ -104,14 +117,10 @@ export default function Education() {
             const progress = getProgress(item.startYear);
 
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group relative"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                className="education-item education-animate group relative"
               >
                 {/* Card Ambient Glow */}
                 <div className="absolute -inset-1 rounded-[28px] bg-gradient-to-tr from-blue-600 via-cyan-500 to-blue-400 opacity-[0.06] blur-lg transition-all duration-500 group-hover:opacity-[0.16]" />
@@ -181,12 +190,12 @@ export default function Education() {
                           {/* Progress Track */}
                           <div className="relative h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
                             {/* Progress Fill */}
-                            <motion.div
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${progress * 100}%` }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                              className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-cyan-400"
+                            <div
+                              style={{
+                                "--progress": `${progress * 100}%`,
+                                animationDelay: "0.2s"
+                              }}
+                              className="education-progress-bar absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-cyan-400"
                             />
 
                             {/* Shine */}
@@ -197,7 +206,7 @@ export default function Education() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

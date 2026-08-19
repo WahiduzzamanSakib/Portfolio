@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 
 import projects from "../../public/projects.json";
 const FeaturedProjectsPage = () => {
-  
+
   return (
     <section
       id="projects"
@@ -51,13 +50,7 @@ const FeaturedProjectsPage = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="mb-16 flex items-center justify-between"
-        >
+        <div className="project-header mb-16 flex items-center justify-between">
           <div>
             <h2 className="font-mono text-4xl font-bold tracking-tight text-slate-900 dark:text-white md:text-5xl">
               My Projects
@@ -78,27 +71,17 @@ const FeaturedProjectsPage = () => {
 
             <FaArrowRight className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </motion.div>
+        </div>
 
         {/* PROJECT GRID */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {projects.slice(0, 3).map((project, index) => (
-            <motion.article
-              key={project.id ?? project.title}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{
-                once: true,
-                amount: 0.15,
+            <article
+              key={project?.id ?? project?.title}
+              style={{
+                animationDelay: `${index * 0.06}s`,
               }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.06,
-              }}
-              whileHover={{
-                y: -6,
-              }}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white/70 shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/60 hover:shadow-xl hover:shadow-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30 dark:hover:border-cyan-400/40"
+              className="project-card group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white/70 shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/60 hover:shadow-xl hover:shadow-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30 dark:hover:border-cyan-400/40"
             >
               {/* Card Glow */}
               <div className="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500/0 via-cyan-400/0 to-purple-500/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-blue-500/10 group-hover:via-cyan-400/10 group-hover:to-purple-500/10 group-hover:opacity-100" />
@@ -161,7 +144,7 @@ const FeaturedProjectsPage = () => {
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>
