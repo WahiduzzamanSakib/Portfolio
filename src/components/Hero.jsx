@@ -73,7 +73,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-green-50 px-6 pb-8 pt-20 transition-colors duration-500 dark:bg-slate-950 md:px-12 lg:px-20"
+      className="relative flex min-h-screen items-center overflow-hidden bg-green-50 px-6 pb-8 pt-36 transition-colors duration-500 dark:bg-slate-950 md:px-12 lg:px-20"
     >
       {/* BACKGROUND */}
 
@@ -102,10 +102,10 @@ const Hero = () => {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
 
       {/* MAIN CONTENT */}
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-16 lg:flex-row lg:gap-20">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col-reverse items-center justify-between gap-10 lg:flex-row lg:gap-20">
 
         {/*  LEFT CONTENT */}
-        <div className="max-w-3xl text-center lg:text-left">
+        <div className=" max-w-3xl text-center lg:text-left">
           {/* Intro */}
           <div className="hero-fade-up hero-delay-1 mb-3 flex items-center justify-center gap-3 lg:justify-start">
             <span className="h-px w-8 bg-cyan-500" />
@@ -198,10 +198,10 @@ const Hero = () => {
         </div>
 
         {/* RIGHT PROFILE */}
-        <div className="relative h-72 w-72 shrink-0 sm:h-80 sm:w-80 md:h-96 md:w-96">
+        <div className="relative mt-6 h-72 w-72 shrink-0 sm:h-80 sm:w-80 md:h-96 md:w-96 lg:mt-0">
           {/* Available Badge */}
           <div
-            className="hero-badge absolute -top-10 left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-cyan-400/30 bg-white/90 px-4 py-2 shadow-lg shadow-cyan-500/10 backdrop-blur-md dark:border-cyan-400/30 dark:bg-gray-600/90 dark:shadow-cyan-500/10"
+            className="hero-badge absolute -top-18 left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-cyan-400/30 bg-white/90 px-4 py-2 shadow-lg shadow-cyan-500/10 backdrop-blur-md dark:border-cyan-400/30 dark:bg-gray-600/90 dark:shadow-cyan-500/10 hidden md:block mb-100"
           >
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">
@@ -210,7 +210,7 @@ const Hero = () => {
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-400" />
               </span>
 
-              <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-300 sm:text-sm">
+              <span className="text-xs font-semibold  text-cyan-600 dark:text-cyan-300 sm:text-sm">
                 Available for Frontend Developer
               </span>
             </div>

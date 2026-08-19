@@ -96,10 +96,10 @@ const Navbar = () => {
             className="flex items-center"
           >
             <Image
-              src="/wahid.webp"
+              src="/my-logo.png"
               alt="Waheduzzaman portfolio logo"
-              width={48}
-              height={36}
+              width={50}
+              height={38}
               className="rounded-full border-2 border-cyan-400 object-cover mr-2 hover:scale-105 transition"
             />
 

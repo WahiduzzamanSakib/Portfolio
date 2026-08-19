@@ -77,7 +77,7 @@ const Footer = () => {
                             Quick Links
                         </h3>
 
-                        <ul className="flex flex-col gap-4">
+                        <ul className="flex flex-row flex-wrap gap-4 lg:flex-col">
                             {links.map(([name, link]) => (
                                 <li key={name}>
                                     <button
