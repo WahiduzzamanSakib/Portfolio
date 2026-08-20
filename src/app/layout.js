@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata = {
   title: "Waheduzzaman | MERN Stack Developer",
   description:
@@ -30,7 +31,7 @@ export const metadata = {
 
     images: [
       {
-        url: "https://waheduzzaman.vercel.app/my-logo.png",
+        url: "https://waheduzzaman.vercel.app/metaData.png",
         width: 1200,
         height: 630,
         alt: "Waheduzzaman portfolio logo",
@@ -38,6 +39,7 @@ export const metadata = {
     ],
   },
 };
+
 export default function RootLayout({ children }) {
 
   return (
