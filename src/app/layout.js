@@ -17,6 +17,8 @@ const geistMono = Geist_Mono({
 
 
 export const metadata = {
+  metadataBase: new URL("https://waheduzzaman.vercel.app"),
+
   title: "Waheduzzaman | MERN Stack Developer",
   description:
     "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
@@ -27,16 +29,23 @@ export const metadata = {
       "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
     url: "https://waheduzzaman.vercel.app",
     siteName: "Waheduzzaman Portfolio",
-    type: "website",
-
     images: [
       {
-        url: "https://waheduzzaman.vercel.app/metaData.png",
+        url: "/metaData.png",
         width: 1200,
         height: 630,
         alt: "Waheduzzaman portfolio logo",
       },
     ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Waheduzzaman | MERN Stack Developer",
+    description:
+      "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
+    images: ["/metaData.png"],
   },
 };
 
