@@ -19,7 +19,15 @@ export const metadata = {
   title: "Waheduzzaman | MERN Stack Developer",
   description:
     "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
+
   openGraph: {
+    title: "Waheduzzaman | MERN Stack Developer",
+    description:
+      "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
+    url: "https://waheduzzaman.vercel.app",
+    siteName: "Waheduzzaman Portfolio",
+    type: "website",
+
     images: [
       {
         url: "https://waheduzzaman.vercel.app/my-logo.png",
@@ -30,7 +38,6 @@ export const metadata = {
     ],
   },
 };
-
 export default function RootLayout({ children }) {
 
   return (

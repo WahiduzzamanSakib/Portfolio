@@ -152,7 +152,7 @@ const Hero = () => {
 
             {/* Resume */}
             <a
-              href="/Waheduzzaman_Resume.pdf"
+              href="/https://drive.google.com/file/d/1dcf1c96pZslR3RXxqJDj8HWyQ0PqPSPD/view?usp=drive_link"
               download
               className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:from-blue-500 hover:to-cyan-500 hover:shadow-xl hover:shadow-blue-500/25 active:scale-[0.97]"
             >
