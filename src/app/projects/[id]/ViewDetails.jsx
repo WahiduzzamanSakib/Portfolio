@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaGithub, FaExternalLinkAlt, FaServer, FaArrowLeft, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 
 
@@ -35,6 +36,8 @@ const ActionButton = ({ href, icon, label, variant = "outline" }) => {
 };
 
 const ViewDetails = ({ project }) => {
+  const router = useRouter();
+
   if (!project) {
     return (
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-6 dark:bg-slate-950">
@@ -117,14 +120,20 @@ const ViewDetails = ({ project }) => {
 
         {/* Back Link */}
         <div className="flex justify-between">
-          <Link
-            href="/#projects"
+          <button
+            type="button"
+            onClick={() => {
+              if (window.history.length > 1) {
+                router.back();
+              } else {
+                router.push("/projects");
+              }
+            }}
             className="group mb-6 inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white/70 px-5 py-3 text-gray-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500 hover:shadow-2xl active:scale-95 dark:border-gray-700 dark:bg-white/5 dark:text-gray-300 dark:hover:border-cyan-400"
           >
             <FaArrowLeft className="transition-transform duration-300 group-hover:-translate-x-2" />
             <span>Back to Projects</span>
-
-          </Link>
+          </button>
 
           <Link
             href="/projects"
@@ -143,7 +152,7 @@ const ViewDetails = ({ project }) => {
           {/* Card Glow */}
           <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-secondary to-primary opacity-0 blur-3xl transition duration-700 group-hover:opacity-20" />
 
-          
+
           {/* CONTENT */}
           <div className="relative p-6 md:p-8">
             {/* TITLE */}
@@ -302,30 +311,74 @@ const ViewDetails = ({ project }) => {
 
 
           {/* IMAGE */}
-          {project?.image && (
-            <div className="relative h-[200px] overflow-hidden bg-gray-200 dark:bg-white/5 md:h-[500px]">
-              <Image
-                src={project.image}
-                alt={
-                  project?.title
-                    ? `${project?.title}`
-                    : "Project screenshot"
-                }
-                fill
-                priority
-                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-              />
+          {/*
+  {project?.image && (
+    <div className="relative h-[200px] overflow-hidden bg-gray-200 dark:bg-white/5 md:h-[500px]">
+      <Image
+        src={project.image}
+        alt={project?.title || "Project screenshot"}
+        fill
+        priority
+        className="object-cover"
+      />
 
-              {/* Image Dark Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* Cyan Bottom Glow */}
-              <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-secondary/30 to-transparent" />
+      <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-secondary/30 to-transparent" />
+    </div>
+  )}
+*/}
 
-              {/* Image Shine */}
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+          {/* LIVE PREVIEW */}
+          {project?.live && (
+            <div className="mt-10">
+              <div className="mb-5 flex items-center justify-between px-2">
+                <div>
+                  <h2 className="font-mono text-2xl font-bold text-black dark:text-white md:text-3xl">
+                    Live Preview
+                  </h2>
+
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Explore the project directly from this page.
+                  </p>
+                </div>
+
+                <a
+                  href={project?.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden items-center gap-2 rounded-xl border border-cyan-500/40 px-4 py-2 text-sm font-semibold text-cyan-600 transition hover:bg-cyan-500/10 md:flex"
+                >
+                  Open Full Page
+                  <FaExternalLinkAlt />
+                </a>
+              </div>
+
+              <div className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/80 shadow-2xl dark:border-white/10 dark:bg-white/5">
+                {/* Preview Header */}
+                <div className="flex items-center gap-2 border-b border-gray-200 bg-gray-50 px-5 py-3 dark:border-white/10 dark:bg-white/5">
+                  <span className="h-3 w-3 rounded-full bg-red-400" />
+                  <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                  <span className="h-3 w-3 rounded-full bg-green-400" />
+
+                  <div className="ml-3 flex-1 truncate rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-xs text-gray-500 dark:border-white/10 dark:bg-black/20">
+                    {project?.live}
+                  </div>
+                </div>
+
+                {/* Website Preview */}
+                <div className="relative h-[650px] w-full bg-white">
+                  <iframe
+                    src={project?.live}
+                    title={`${project?.title} Live Preview`}
+                    className="h-full w-full border-0"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           )}
+
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma, FaDatabase, FaCode, FaServer } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiPostman, SiStripe, SiNpm, SiVercel, SiNetlify } from "react-icons/si";
 
@@ -84,10 +84,38 @@ function SkillsSkeleton() {
 // 4. MAIN SKILLS VIEW CONTENT
 // ----------------------------------------------------
 function SkillsContent() {
+
+  const skillsRef = useRef(null);
+  const [showAnimation, setShowAnimation] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowAnimation(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    if (skillsRef.current) {
+      observer.observe(skillsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+
+
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-slate-50 py-10 transition-colors duration-500 dark:bg-slate-900/60 sm:py-14"
+      ref={skillsRef}
+      className={`relative overflow-hidden bg-slate-50 py-10 transition-colors duration-500 dark:bg-slate-900/60 sm:py-14 ${showAnimation ? "skills-visible" : ""
+        }`}
     >
       {/* BACKGROUND GLOW EFFECTS */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

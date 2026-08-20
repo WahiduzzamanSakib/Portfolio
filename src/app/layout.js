@@ -30,7 +30,8 @@ export const metadata = {
 
     images: [
       {
-        url: "https://waheduzzaman.vercel.app/my-logo.png",
+        // url: "https://waheduzzaman.vercel.app/my-logo.png",
+        url: "https://waheduzzaman.vercel.app/metaData.png",
         width: 1200,
         height: 630,
         alt: "Waheduzzaman portfolio logo",

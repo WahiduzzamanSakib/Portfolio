@@ -391,20 +391,24 @@
   transform: translateY(25px);
   animation: projectFadeUp 0.4s ease forwards;
 }
+
 /* Card hover replacement of framer whileHover */
 .project-card:hover {
   transform: translateY(-6px);
 }
+
 /* Smooth animation */
 .project-card,
 .project-header {
   will-change: transform, opacity;
 }
+
 @keyframes projectFadeUp {
   from {
     opacity: 0;
     transform: translateY(25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -415,23 +419,30 @@
 .animate-project-glow-left {
   animation: glowLeft 8s ease-in-out infinite;
 }
+
 .animate-project-glow-right {
   animation: glowRight 8s ease-in-out infinite;
 }
+
 @keyframes glowLeft {
+
   0%,
   100% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(40px, 30px);
   }
 }
+
 @keyframes glowRight {
+
   0%,
   100% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(-40px, -30px);
   }
@@ -446,39 +457,47 @@
   transform: translateY(30px);
   animation: skillsFadeUp .6s ease forwards;
 }
+
 /* Category grid */
 .skill-card {
   opacity: 0;
   transform: translateY(30px);
   animation: skillsFadeUp .5s ease forwards;
 }
+
 /* Card hover */
 .skill-card:hover {
   transform: translateY(-5px);
 }
+
 /* Mini card hover replacement */
 .mini-skill-card:hover {
   transform: scale(1.02);
 }
+
 /* Progress bar */
-.progress-bar {
+.skills-visible .progress-bar {
   width: 0;
   animation: progressFill 1s ease forwards;
 }
+
 @keyframes skillsFadeUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes progressFill {
   from {
     width: 0;
   }
+
   to {
     width: var(--progress);
   }
@@ -499,6 +518,7 @@
     opacity: 0;
     transform: scale(.8);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -518,6 +538,7 @@
     opacity: 0;
     transform: translateY(60px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -536,6 +557,7 @@
     opacity: 0;
     transform: translateX(-40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -580,35 +602,44 @@
   animation:
     cyanFloat 15s ease-in-out infinite;
 }
+
 @keyframes blueFloat {
+
   0%,
   100% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(80px, -40px);
   }
 }
+
 @keyframes cyanFloat {
+
   0%,
   100% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(-60px, 50px);
   }
 }
+
 .challenge-card,
 .future-card {
   opacity: 0;
   transform: translateY(20px);
   animation: cardShow 0.5s ease forwards;
 }
+
 @keyframes cardShow {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -620,21 +651,25 @@
   opacity: 0;
   animation: featuresHeaderFadeUp 0.6s ease-out forwards;
 }
+
 @keyframes featuresHeaderFadeUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 .features-card {
   opacity: 0;
   animation: featuresCardFadeUp 0.5s ease-out forwards;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .features-card:hover {
   transform: translateY(-8px);
 }
@@ -644,6 +679,7 @@
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -655,35 +691,43 @@
   opacity: 0;
   will-change: transform, opacity;
 }
+
 .education-visible .education-header {
   animation: educationHeaderIn 0.6s ease-out 0.2s forwards;
 }
+
 .education-visible .education-item {
   animation: educationItemIn 0.6s ease-out forwards;
   transition: transform 0.3s ease;
 }
+
 .education-visible .education-item:hover {
   transform: translateY(-5px);
 }
+
 .education-visible .education-progress-bar {
   width: 0;
   animation: progressFill 1s ease-out forwards;
 }
+
 @keyframes educationHeaderIn {
   from {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
+
 @keyframes educationItemIn {
   from {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

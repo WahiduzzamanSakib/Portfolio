@@ -88,7 +88,7 @@ const Navbar = () => {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/90 backdrop-blur-xl shadow-lg" : "dark:bg-black/70 bg-gray-300 backdrop-blur-md"} dark:text-white border-b border-white/10`}
     >
       <div className="flex items-center justify-between h-20 px-6 md:px-16 max-w-7xl mx-auto">
-       
+
         {/* Logo */}
         <div>
           <Link
@@ -119,7 +119,7 @@ const Navbar = () => {
             navLinks.map((link) => (
               <a
                 key={link.href}
-                href="#"
+                href={`#${link.href}`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleClick(link.href);
