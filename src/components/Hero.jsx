@@ -217,7 +217,7 @@ const Hero = () => {
           </div>
 
           {/* Profile */}
-          <div className="hero-profile relative h-full w-full transition-transform duration-300 hover:-translate-y-2">
+          <div className="hero-profile relative h-full w-full transition-transform duration-300 ">
             {/* Profile Glow */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-purple-500/15 blur-3xl" />
 
@@ -229,7 +229,7 @@ const Hero = () => {
 
             {/* Image */}
             <div
-              className="relative h-full w-full overflow-hidden rounded-full border-4 border-white bg-slate-100 shadow-2xl shadow-blue-900/10 dark:border-slate-900 dark:bg-slate-800 dark:shadow-black/30"
+              className="group relative h-full w-full overflow-hidden rounded-full border-4 border-white bg-slate-100 shadow-2xl shadow-blue-900/10 dark:border-slate-900 dark:bg-slate-800 dark:shadow-black/30"
             >
               <Image
                 src="/wahid.webp"
@@ -237,10 +237,9 @@ const Hero = () => {
                 fill
                 priority
                 sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
-                className="object-cover transition-transform duration-700 hover:scale-105 opacity-90 hover:opacity-100"
+                className="origin-center object-cover opacity-90 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
               />
 
-              {/* Image Overlay */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-t from-blue-950/20 via-transparent to-transparent" />
             </div>
           </div>

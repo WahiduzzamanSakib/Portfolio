@@ -32,7 +32,7 @@ const AllProjectsPage = () => {
 
   return (
     <section
-      id="projects"
+      // id="projects"
       className="scroll-mt-24 mt-22 relative isolate overflow-hidden bg-white py-10 dark:bg-slate-950 md:py-12"
     >
       {/*  HERO STYLE BACKGROUND */}

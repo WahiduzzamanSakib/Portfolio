@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaExternalLinkAlt, FaServer, FaArrowLeft, FaCheckCircle } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaServer, FaArrowLeft, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 
 
 /* Reusable action button */
@@ -114,15 +114,27 @@ const ViewDetails = ({ project }) => {
       {/*  CONTENT */}
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        {/* Back Link */}
-        <Link
-          href="/projects"
-          className="group mb-6 inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white/70 px-5 py-3 text-gray-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500 hover:shadow-2xl active:scale-95 dark:border-gray-700 dark:bg-white/5 dark:text-gray-300 dark:hover:border-cyan-400"
-        >
-          <FaArrowLeft className="transition-transform duration-300 group-hover:-translate-x-2" />
 
-          <span>View All Projects</span>
-        </Link>
+        {/* Back Link */}
+        <div className="flex justify-between">
+          <Link
+            href="/#projects"
+            className="group mb-6 inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white/70 px-5 py-3 text-gray-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500 hover:shadow-2xl active:scale-95 dark:border-gray-700 dark:bg-white/5 dark:text-gray-300 dark:hover:border-cyan-400"
+          >
+            <FaArrowLeft className="transition-transform duration-300 group-hover:-translate-x-2" />
+            <span>Back to Projects</span>
+
+          </Link>
+
+          <Link
+            href="/projects"
+            className="group mb-6 inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white/70 px-5 py-3 text-gray-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500 hover:shadow-2xl active:scale-95 dark:border-gray-700 dark:bg-white/5 dark:text-gray-300 dark:hover:border-cyan-400"
+          >
+            <span>View All Projects</span>
+            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-2" />
+
+          </Link>
+        </div>
 
         {/* Main Project Card */}
         <div
@@ -131,32 +143,7 @@ const ViewDetails = ({ project }) => {
           {/* Card Glow */}
           <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-secondary to-primary opacity-0 blur-3xl transition duration-700 group-hover:opacity-20" />
 
-          {/* IMAGE */}
-          {project?.image && (
-            <div className="relative h-[200px] overflow-hidden bg-gray-200 dark:bg-white/5 md:h-[500px]">
-              <Image
-                src={project.image}
-                alt={
-                  project?.title
-                    ? `${project?.title}`
-                    : "Project screenshot"
-                }
-                fill
-                priority
-                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-              />
-
-              {/* Image Dark Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-              {/* Cyan Bottom Glow */}
-              <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-secondary/30 to-transparent" />
-
-              {/* Image Shine */}
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
-            </div>
-          )}
-
+          
           {/* CONTENT */}
           <div className="relative p-6 md:p-8">
             {/* TITLE */}
@@ -179,7 +166,7 @@ const ViewDetails = ({ project }) => {
                     {project?.tags?.map((tag, index) => (
                       <span
                         key={`${tag}-${index}`}
-                        className="project-tag cursor-default rounded-full border border-secondary/40 bg-secondary/10 px-4 py-1.5 text-sm font-semibold text-secondary shadow-sm transition-all duration-300 hover:bg-secondary/20 dark:bg-secondary/20"
+                        className="project-tag cursor-default rounded-full border border-blue-600 bg-secondary/10 px-4 py-1.5 text-sm font-semibold text-secondary shadow-sm transition-all duration-300 hover:bg-secondary/20 dark:bg-secondary/20"
                       >
                         {tag}
                       </span>
@@ -196,7 +183,7 @@ const ViewDetails = ({ project }) => {
                   href={project?.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/button flex items-center justify-center gap-3 rounded-2xl border border-primary/40 px-8 py-4 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
+                  className="group/button flex items-center justify-center gap-3 rounded-2xl border border-cyan-600 bg-blue-900 px-8 py-4 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
                 >
                   <FaExternalLinkAlt className="transition group-hover/button:-translate-y-1 group-hover/button:translate-x-1" />
                   Live Link
@@ -208,7 +195,7 @@ const ViewDetails = ({ project }) => {
                   href={project?.clientRepo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/button flex items-center gap-3 rounded-2xl border border-primary/40 px-7 py-3.5 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
+                  className="group/button flex items-center gap-3 rounded-2xl border border-cyan-600 px-7 py-3.5 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
                 >
                   <FaGithub className="transition group-hover/button:rotate-12" />
                   Client Repo
@@ -220,7 +207,7 @@ const ViewDetails = ({ project }) => {
                   href={project?.serverRepo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/button flex items-center gap-3 rounded-2xl border border-primary/40 px-7 py-3.5 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
+                  className="group/button flex items-center gap-3 rounded-2xl border border-cyan-600 px-7 py-3.5 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
                 >
                   <FaServer className="transition group-hover/button:rotate-12" />
                   Server Repo
@@ -312,6 +299,33 @@ const ViewDetails = ({ project }) => {
               )}
             </div>
           </div>
+
+
+          {/* IMAGE */}
+          {project?.image && (
+            <div className="relative h-[200px] overflow-hidden bg-gray-200 dark:bg-white/5 md:h-[500px]">
+              <Image
+                src={project.image}
+                alt={
+                  project?.title
+                    ? `${project?.title}`
+                    : "Project screenshot"
+                }
+                fill
+                priority
+                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+              />
+
+              {/* Image Dark Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+              {/* Cyan Bottom Glow */}
+              <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-secondary/30 to-transparent" />
+
+              {/* Image Shine */}
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+            </div>
+          )}
         </div>
       </div>
 
