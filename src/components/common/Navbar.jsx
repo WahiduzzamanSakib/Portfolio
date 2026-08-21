@@ -8,6 +8,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { ThemeToggle } from "../theme-toggle";
 
 
+
 const Navbar = () => {
 
   const navLinks = [
@@ -85,8 +86,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/90 backdrop-blur-xl shadow-lg" : "dark:bg-black/70 bg-gray-300 backdrop-blur-md"} dark:text-white border-b border-white/10`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? "bg-white/90 dark:bg-black/90 backdrop-blur-xl shadow-lg border-b border-slate-200 dark:border-white/10"
+        : "bg-transparent border-b border-transparent"
+        } text-slate-800 dark:text-white`}
     >
+     
       <div className="flex items-center justify-between h-20 px-6 md:px-16 max-w-7xl mx-auto">
 
         {/* Logo */}
@@ -113,7 +118,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div
-          className="hidden md:flex items-center gap-6 px-8 py-3 rounded-full border border-slate-700/60 bg-[#0f172a]/80 backdrop-blur-md shadow-lg"
+          className="hidden md:flex items-center gap-6 px-8 py-3 rounded-full border border-slate-200 dark:border-slate-700/60 bg-white/80 dark:bg-[#0f172a]/80 backdrop-blur-md shadow-lg"
         >
           {
             navLinks.map((link) => (
@@ -124,12 +129,15 @@ const Navbar = () => {
                   e.preventDefault();
                   handleClick(link.href);
                 }}
-                className={`relative text-sm font-semibold hover:scale-110 transition-all duration-300 ${active === link.href ? "text-cyan-400" : "text-slate-300 hover:text-white"}`}
+                className={`relative text-sm font-semibold hover:scale-110 transition-all duration-300 ${active === link.href
+                  ? "text-cyan-600 dark:text-cyan-400"
+                  : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
+                  }`}
               >
                 {link.name}
                 {
                   active === link.href && (
-                    <span className="absolute left-0 -bottom-2 w-full h-[2px] bg-cyan-400" />
+                    <span className="absolute left-0 -bottom-2 w-full h-[2px] bg-cyan-600 dark:bg-cyan-400" />
                   )}
               </a>
             ))
@@ -141,10 +149,14 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className=" md:hidden dark:text-white text-black text-3xl "
+            className="md:hidden text-3xl cursor-pointer hover:opacity-80 transition"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? <HiX /> : <HiMenu />}
+            {menuOpen ? (
+              <HiX className="text-slate-900 dark:text-slate-100" />
+            ) : (
+              <HiMenu className="text-slate-900 dark:text-slate-100" />
+            )}
           </button>
 
           {/* Hire Button */}
@@ -161,14 +173,17 @@ const Navbar = () => {
       {
         menuOpen && (
           <div
-            className="md:hidden absolute top-20 left-0 w-full bg-black/90 backdrop-blur-md flex flex-col items-center gap-6 py-6 border-b border-white/10 animate-fadeIn"
+            className="md:hidden absolute top-20 left-0 w-full bg-white/95 dark:bg-black/90 backdrop-blur-md flex flex-col items-center gap-6 py-6 border-b border-slate-200 dark:border-white/10 animate-fadeIn"
           >
             {
               navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleClick(link.href)}
-                  className={`text-sm font-medium cursor-pointer transition-colors ${active === link.href ? "text-cyan-400" : "text-gray-400 hover:text-white"}`}
+                  className={`text-sm font-medium cursor-pointer transition-colors ${active === link.href
+                    ? "text-cyan-600 dark:text-cyan-400"
+                    : "text-white dark:text-gray-400 hover:text-blue-600 dark:hover:text-white"
+                    }`}
                 >
                   {link.name}
                 </button>
