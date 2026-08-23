@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import ScrollProgress from "../components/ScrollProgress";
 
 
 const geistSans = Geist({
@@ -65,6 +66,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Navbar />
+          <ScrollProgress />
           {children}
           <Footer />
         </ThemeProvider>
