@@ -44,7 +44,8 @@ const socials = [
     name: "GitHub",
     href: "https://github.com/WahiduzzamanSakib",
     icon: FaGithub,
-    hoverColor: "hover:text-white hover:border-white/40 hover:bg-white/10",
+    hoverColor:
+      "hover:text-white hover:border-white/40 hover:bg-white/10",
   },
   {
     name: "LinkedIn",

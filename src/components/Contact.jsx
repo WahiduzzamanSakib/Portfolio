@@ -15,26 +15,18 @@ import { IoIosSend } from "react-icons/io";
 
 function ContactSkeleton() {
   return (
-    <section className="relative isolate overflow-hidden bg-white dark:bg-slate-950 py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Header Skeleton */}
-        <div className="flex flex-col items-center space-y-3 text-center">
-          <div className="h-10 w-64 animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800" />
-          <div className="h-4 w-80 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
-        </div>
+    <section className="relative overflow-hidden bg-slate-50 py-16 dark:bg-slate-950">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="h-10 w-64 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
 
-        {/* Panel Skeleton Grid */}
-        <div className="grid auto-rows-fr grid-cols-1 gap-8 lg:grid-cols-12">
-          {/* Left Panel Skeleton */}
-          <div className="h-[520px] animate-pulse rounded-3xl bg-slate-200/80 dark:bg-slate-900/80 lg:col-span-5" />
-          {/* Right Panel Skeleton */}
-          <div className="h-[520px] animate-pulse rounded-3xl bg-slate-200/80 dark:bg-slate-800/50 lg:col-span-7" />
+        <div className="mt-10 grid gap-8 lg:grid-cols-12">
+          <div className="h-[520px] rounded-3xl bg-slate-200 dark:bg-slate-800 lg:col-span-5 animate-pulse" />
+          <div className="h-[520px] rounded-3xl bg-slate-200 dark:bg-slate-800 lg:col-span-7 animate-pulse" />
         </div>
       </div>
     </section>
   );
 }
-
 
 function ContactContent() {
   const formRef = useRef(null);
@@ -51,7 +43,6 @@ function ContactContent() {
     setErrorMessage("");
 
     try {
-      // Lazy load EmailJS only on form submission to save initial JS bundle size
       const emailjs = (await import("@emailjs/browser")).default;
 
       await emailjs.sendForm(
@@ -60,13 +51,15 @@ function ContactContent() {
         formRef.current,
         process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
       );
+
       setStatus("success");
       formRef.current.reset();
+
       setTimeout(() => {
         setStatus("idle");
       }, 4000);
     } catch (error) {
-      console.error("EmailJS Error:", error);
+      console.log(error);
       setStatus("error");
       setErrorMessage("Failed to send message. Please try again.");
     }
@@ -75,61 +68,60 @@ function ContactContent() {
   return (
     <section
       id="contact"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-white dark:bg-slate-950"
+      className="relative isolate overflow-hidden scroll-mt-24 bg-slate-50 dark:bg-slate-950"
     >
-      {/* OPTIMIZED BACKDROP GLOWS (Static & Hardware Accelerated) */}
-      <div className="pointer-events-none absolute left-[-10%] top-20 z-0 h-72 w-72 transform-gpu rounded-full bg-blue-500/10 blur-2xl" />
-      <div className="pointer-events-none absolute bottom-0 right-[-10%] z-0 h-80 w-80 transform-gpu rounded-full bg-cyan-500/10 blur-2xl" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-full bg-blue-500/10 blur-2xl" />
+      {/* BACKGROUND */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[-120px] top-20 h-[350px] w-[350px] rounded-full bg-blue-500/10 blur-[120px]" />
+        <div className="absolute right-[-120px] bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
+      </div>
 
-      {/* Grid Pattern */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.025] dark:opacity-[0.035] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
-
-      {/* Fades */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-40 bg-gradient-to-b from-white/80 to-transparent dark:from-slate-950/80" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
-
-      {/* CONTENT */}
       <div className="relative z-10">
-        {/* Header */}
-        <div className="px-4 pb-10 pt-8 text-center sm:px-6 lg:px-8">
-          <h2 className="mt-5 text-4xl font-black tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-            Get <span className="text-blue-400">In Touch</span>
+        {/* HEADER */}
+        <div className="px-6 pt-14 pb-10 text-center">
+          <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+            Get
+            <span className="ml-2 bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-500 bg-clip-text text-transparent">
+              In Touch
+            </span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-xl text-sm text-slate-600 sm:text-base dark:text-white">
+          <p className="mx-auto mt-4 max-w-xl text-slate-600 dark:text-slate-400">
             Have a project idea or want to collaborate? Drop me a message and
             I'll get back to you.
           </p>
         </div>
 
-        {/* Contact Panels */}
-        <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 lg:px-8">
-          <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
-            {/* LEFT SIDE */}
-            <div className="flex h-full flex-col justify-between rounded-3xl bg-[#0f0e38] p-8 text-white shadow-2xl sm:p-10 lg:col-span-5">
-              <div>
-                <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+        <div className="mx-auto max-w-6xl px-6 pb-16">
+          <div className="grid gap-8 lg:grid-cols-12">
+            {/* LEFT PANEL */}
+            <div className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-8 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/60 lg:col-span-5">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10 opacity-0 transition duration-500 group-hover:opacity-100" />
+
+              <div className="relative z-10">
+                <h2 className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">
                   Let's start a conversation
                 </h2>
 
-                <p className="mb-8 text-sm leading-relaxed text-slate-300">
+                <p className="mb-8 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                   Whether you're looking to collaborate, have a question, or
-                  just want to connect, I'm here and ready to help bring your
-                  ideas to life.
+                  just want to connect, I'm ready to help bring your ideas to
+                  life.
                 </p>
 
-                <div className="mb-8 space-y-4">
+                {/* CONTACT INFO CARDS */}
+                <div className="space-y-4">
                   {/* EMAIL */}
-                  <div className="flex min-h-[72px] items-center gap-4 rounded-2xl border border-indigo-900/40 bg-[#1e1c53] p-4 transition-all hover:border-indigo-500/50">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2b286f]">
+                  <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-all hover:border-cyan-400 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/70 hover:scale-105 duration-300">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-500">
                       <FaEnvelope />
                     </div>
-                    <div className="overflow-hidden">
-                      <p className="text-xs text-slate-400">Email me at</p>
+                    <div>
+                      <p className="text-xs text-slate-500">Email me at</p>
                       <a
                         href="mailto:wahidzamanpg@gmail.com"
-                        className="block truncate text-sm font-semibold hover:underline"
+                        className="text-sm font-semibold text-slate-800 hover:text-cyan-500 dark:text-white dark:hover:text-cyan-500"
                       >
                         wahidzamanpg@gmail.com
                       </a>
@@ -137,15 +129,15 @@ function ContactContent() {
                   </div>
 
                   {/* PHONE */}
-                  <div className="flex min-h-[72px] items-center gap-4 rounded-2xl border border-indigo-900/40 bg-[#1e1c53] p-4 transition-all hover:border-indigo-500/50">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2b286f]">
+                  <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-all hover:border-cyan-400 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/70 hover:scale-105 duration-300">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10 text-blue-500">
                       <FaPhone />
                     </div>
-                    <div className="overflow-hidden">
-                      <p className="text-xs text-slate-400">Call me at</p>
+                    <div>
+                      <p className="text-xs text-slate-500">Call me at</p>
                       <a
                         href="tel:+8801752187286"
-                        className="block truncate text-sm font-semibold hover:underline"
+                        className="text-sm font-semibold text-slate-800 hover:text-cyan-500 dark:text-white dark:hover:text-cyan-500"
                       >
                         +880 1752-187286
                       </a>
@@ -153,167 +145,145 @@ function ContactContent() {
                   </div>
 
                   {/* WHATSAPP */}
-                  <div className="flex min-h-[72px] items-center gap-4 rounded-2xl border border-indigo-900/40 bg-[#1e1c53] p-4 transition-all hover:border-indigo-500/50">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2b286f]">
-                      <FaWhatsapp className="text-green-400" />
+                  <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-all hover:border-cyan-400 hover:shadow-md dark:border-slate-800 dark:hover:text-cyan-500   dark:bg-slate-900/70 hover:scale-105 duration-300">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-500/10 text-green-500">
+                      <FaWhatsapp />
                     </div>
-                    <div className="overflow-hidden">
-                      <p className="text-xs text-slate-400">WhatsApp me</p>
+                    <div>
+                      <p className="text-xs text-slate-500">WhatsApp</p>
                       <a
                         href="https://wa.me/8801752187286"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 truncate text-sm font-semibold hover:text-cyan-500"
+                        className="flex items-center gap-2 text-sm font-semibold text-slate-800 hover:text-cyan-500 dark:text-white dark:hover:text-cyan-500"
                       >
                         Chat on WhatsApp
-                        <IoIosSend size={20} />
+                        <IoIosSend />
                       </a>
                     </div>
                   </div>
 
-                  {/* SOCIAL LINKS */}
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {/* GITHUB */}
-                    <div className="flex min-h-[72px] items-center gap-4 rounded-2xl border border-indigo-900/40 bg-[#1e1c53] p-4 transition-all hover:border-indigo-500/50">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2b286f]">
-                        <FaGithub />
-                      </div>
-                      <div>
-                        <a
-                          href="https://github.com/WahiduzzamanSakib"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm font-semibold hover:underline"
-                        >
-                          Github
-                        </a>
-                      </div>
-                    </div>
+                  {/* SOCIAL */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <a
+                      href="https://github.com/WahiduzzamanSakib"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 font-semibold transition hover:border-cyan-400 dark:hover:text-cyan-500 hover:text-cyan-500  dark:border-slate-800 dark:bg-slate-900/70 dark:text-white hover:scale-105 duration-300"
+                    >
+                      <FaGithub />
+                      Github
+                    </a>
 
-                    {/* LINKEDIN */}
-                    <div className="flex min-h-[72px] items-center gap-4 rounded-2xl border border-indigo-900/40 bg-[#1e1c53] p-4 transition-all hover:border-indigo-500/50">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2b286f]">
-                        <FaLinkedin className="text-blue-400" />
-                      </div>
-                      <div>
-                        <a
-                          href="https://www.linkedin.com/in/waheduzzaman-md"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm font-semibold hover:underline"
-                        >
-                          Linkedin
-                        </a>
-                      </div>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/in/waheduzzaman-md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 font-semibold transition hover:border-cyan-400 dark:hover:text-cyan-500 hover:text-cyan-500 dark:border-slate-800 dark:bg-slate-900/70 dark:text-white hover:scale-105 duration-300"
+                    >
+                      <FaLinkedin />
+                      Linkedin
+                    </a>
                   </div>
                 </div>
-              </div>
 
-              {/* STATUS */}
-              <div className="mt-8 flex items-center gap-2 rounded-xl border border-indigo-900/30 bg-[#1a1848] p-3 text-xs text-slate-300">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                <span>Available for freelance & collaboration</span>
+                {/* STATUS */}
+                <div className="mt-8 flex items-center gap-2 rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-3 text-sm text-slate-700 dark:text-slate-300">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                  Available for freelance & collaboration
+                </div>
               </div>
             </div>
 
-            {/* RIGHT SIDE (Form) */}
-            <div className="flex h-full flex-col justify-between rounded-3xl bg-[#9da5b4] p-8 text-slate-800 shadow-2xl sm:p-10 lg:col-span-7 dark:bg-slate-600">
-              <div>
-                <div className="mb-6 flex items-center gap-2 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-cyan-400">
-                  <span className="inline-block h-3 w-3 rounded-full bg-emerald-500" />
-                  <h2>Send me a message</h2>
+            {/* RIGHT FORM */}
+           <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-8 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/60 lg:col-span-7">
+              <div className="mb-6 flex items-center gap-2 text-2xl font-bold text-slate-900 dark:text-white">
+                <span className="h-3 w-3 rounded-full bg-emerald-500" />
+                Send me a message
+              </div>
+
+              <form ref={formRef} onSubmit={sendEmail} className="space-y-5">
+                {[
+                  {
+                    label: "YOUR NAME",
+                    name: "user_name",
+                    type: "text",
+                    placeholder: "Enter your full name",
+                  },
+                  {
+                    label: "EMAIL ADDRESS",
+                    name: "user_email",
+                    type: "email",
+                    placeholder: "your@email.com",
+                  },
+                  {
+                    label: "SUBJECT",
+                    name: "subject",
+                    type: "text",
+                    placeholder: "Project discussion",
+                  },
+                ].map((item) => (
+                  <div key={item?.name}>
+                    <label className="mb-2 block text-xs font-bold tracking-wider text-slate-600 dark:text-slate-300">
+                      {item?.label}
+                    </label>
+
+                    <input
+                      type={item?.type}
+                      name={item?.name}
+                      required
+                      placeholder={item.placeholder}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-100 px-4 py-3.5 text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:text-slate-900 focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:focus:bg-gray-500 dark:focus:text-slate-900"
+                    />
+                  </div>
+                ))}
+
+                <div>
+                  <label className="mb-2 block text-xs font-bold tracking-wider text-slate-600 dark:text-slate-300">
+                    YOUR MESSAGE
+                  </label>
+
+                  <textarea
+                    name="message"
+                    rows={5}
+                    required
+                    placeholder="Tell me about your project..."
+                    className="w-full resize-none rounded-xl border border-slate-200 bg-slate-100 px-4 py-3.5 text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:text-slate-900 focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:focus:bg-gray-500 dark:focus:text-slate-900"
+                  />
                 </div>
 
-                <form ref={formRef} onSubmit={sendEmail} className="space-y-5">
-                  {/* Name */}
-                  <div>
-                    <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-white">
-                      YOUR NAME
-                    </label>
-                    <input
-                      type="text"
-                      name="user_name"
-                      required
-                      placeholder="Enter your full name"
-                      className="w-full rounded-xl border border-transparent bg-[#c5cbd3] px-4 py-3.5 text-slate-900 placeholder-slate-500 transition-all duration-200 focus:border-indigo-500 focus:bg-white focus:outline-none"
-                    />
-                  </div>
+                {status === "error" && (
+                  <p className="text-sm font-semibold text-red-500">
+                    {errorMessage}
+                  </p>
+                )}
 
-                  {/* Email */}
-                  <div>
-                    <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-white">
-                      EMAIL ADDRESS
-                    </label>
-                    <input
-                      type="email"
-                      name="user_email"
-                      required
-                      placeholder="your@email.com"
-                      className="w-full rounded-xl border border-transparent bg-[#c5cbd3] px-4 py-3.5 text-slate-900 placeholder-slate-500 transition-all duration-200 focus:border-indigo-500 focus:bg-white focus:outline-none"
-                    />
-                  </div>
-
-                  {/* Subject */}
-                  <div>
-                    <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-white">
-                      SUBJECT
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      required
-                      placeholder="Project discussion / Collaboration"
-                      className="w-full rounded-xl border border-transparent bg-[#c5cbd3] px-4 py-3.5 text-slate-900 placeholder-slate-500 transition-all duration-200 focus:border-indigo-500 focus:bg-white focus:outline-none"
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-white">
-                      YOUR MESSAGE
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={4}
-                      required
-                      placeholder="Tell me about your project, collaboration ideas,"
-                      className="w-full resize-none rounded-xl border border-transparent bg-[#c5cbd3] px-4 py-3.5 text-slate-900 placeholder-slate-500 transition-all duration-200 focus:border-indigo-500 focus:bg-white focus:outline-none"
-                    />
-                  </div>
-
-                  {/* Error */}
-                  {status === "error" && (
-                    <p className="text-sm font-semibold text-red-600">
-                      {errorMessage}
-                    </p>
-                  )}
-
-                  {/* Submit Button */}
-                  <button
-                    disabled={status === "loading" || status === "success"}
-                    type="submit"
-                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-4 font-semibold text-white shadow-md transition-all duration-300 ${status === "success"
-                        ? "bg-emerald-600"
-                        : "bg-[#3331b2] hover:bg-[#282693]"
-                      }`}
-                  >
+                <button
+                  disabled={status === "loading" || status === "success"}
+                  className={`flex w-full items-center justify-center gap-2 rounded-xl py-4 font-semibold text-white transition-all ${
+                    status === "success"
+                      ? "bg-emerald-600"
+                      : "bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 hover:shadow-lg hover:shadow-cyan-500/30"
+                  }`}
+                >
                   {status === "loading" && (
                     <>
                       <FaSpinner className="animate-spin" />
                       Sending...
                     </>
                   )}
+
                   {status === "success" && (
                     <>
                       <FaCheck />
-                      Message Sent!
+                      Message Sent
                     </>
                   )}
+
                   {status === "idle" && (
                     <>
                       Send Message
-                      <FaPaperPlane className="text-sm" />
+                      <FaPaperPlane />
                     </>
                   )}
                 </button>
@@ -322,14 +292,12 @@ function ContactContent() {
           </div>
         </div>
       </div>
-    </div>
 
-      {/* DIVIDER */ }
-  <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-    </section >
+      {/* DIVIDER */}
+      <div className="absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+    </section>
   );
 }
-
 
 export default function Contact() {
   return (

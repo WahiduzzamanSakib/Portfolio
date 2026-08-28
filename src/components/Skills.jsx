@@ -80,9 +80,6 @@ function SkillsSkeleton() {
   );
 }
 
-// ----------------------------------------------------
-// 4. MAIN SKILLS VIEW CONTENT
-// ----------------------------------------------------
 function SkillsContent() {
 
   const skillsRef = useRef(null);
@@ -216,17 +213,13 @@ function SkillsContent() {
             </div>
           ))}
         </div>
-
-        {/* SECTION DIVIDER */}
-        <div className=" absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
       </div>
+      {/* SECTION DIVIDER */}
+        <div className=" absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
     </section>
   );
 }
 
-// ----------------------------------------------------
-// 5. EXPORT WITH LAZY LOADING / SUSPENSE
-// ----------------------------------------------------
 export default function Skills() {
   return (
     <Suspense fallback={<SkillsSkeleton />}>

@@ -210,10 +210,9 @@ export default function Education() {
             );
           })}
         </div>
-
-        {/* Section Divider */}
-        <div className="mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent" />
       </div>
+       {/* DIVIDER */}
+      <div className="absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
     </section>
   );
 }

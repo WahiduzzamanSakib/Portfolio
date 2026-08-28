@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { FaArrowRight, FaBookOpen, FaHandshake } from "react-icons/fa";
 import { SiNextdotjs, SiReact, SiTailwindcss } from "react-icons/si";
