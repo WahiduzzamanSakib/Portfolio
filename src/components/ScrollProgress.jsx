@@ -26,7 +26,7 @@ export default function ScrollProgress() {
     <div
       ref={barRef}
       className="
-        fixed top-20 left-0 right-0 h-[3px] z-[9999]
+        fixed top-20 left-0 right-0 h-[3px] z-90
         bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400
         origin-left
       "

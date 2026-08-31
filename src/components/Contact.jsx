@@ -139,7 +139,7 @@ function ContactContent() {
                         href="tel:+8801752187286"
                         className="text-sm font-semibold text-slate-800 hover:text-cyan-500 dark:text-white dark:hover:text-cyan-500"
                       >
-                        +880 1752-187286
+                     Click Here To Call
                       </a>
                     </div>
                   </div>

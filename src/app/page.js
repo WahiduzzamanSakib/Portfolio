@@ -6,6 +6,7 @@ import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import TechStack from "@/components/TechStack";
+import Achievements from "@/components/Achievements";
 
 
 export default function Home() {
@@ -19,7 +20,8 @@ export default function Home() {
       <TechStack />
      <FeaturedProjectsPage/>
 
-      <Education/>
+      <Education />
+     <Achievements />
       <Contact/>
     </main> 
   );
