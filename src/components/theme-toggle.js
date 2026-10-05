@@ -1,33 +1,44 @@
-"use client"
+"use client";
 
-import { useTheme } from "next-themes"
-import { useEffect, useState } from "react"
+import { useTheme } from "next-themes";
+import { useSyncExternalStore } from "react";
+import { FiSun, FiMoon } from "react-icons/fi";
+
+const emptySubscribe = () => () => {};
+
+function useMounted() {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
 
 export function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const mounted = useMounted();
 
-  const { theme, setTheme } = useTheme()
+  if (!mounted) {
+    return (
+      <div className="h-9 w-9 rounded-full border border-slate-200/80 bg-slate-100/50 dark:border-white/10 dark:bg-slate-900/50" />
+    );
+  }
 
-  const [mounted, setMounted] = useState(false)
-
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-
-  if (!mounted) return null
-
+  const isDark = theme === "dark";
 
   return (
     <button
-      onClick={() =>
-        setTheme(theme === "dark" ? "light" : "dark")
-      }
-      className="px-3 py-1 rounded border border-black dark:border-gray-600 cursor-pointer hover:scale-105 transition-all duration-300 ease-out"
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+      className="group relative flex h-9 w-9 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-cyan-500/50 hover:text-cyan-500 hover:shadow-md hover:shadow-cyan-500/10 active:scale-95 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:border-cyan-400/50 dark:hover:text-cyan-400 cursor-pointer"
     >
-
-      {theme === "dark" ? "☀️" : "🌙"}
-
+      <span className="sr-only">Toggle theme</span>
+      {isDark ? (
+        <FiSun className="h-4 w-4 transition-transform duration-500 group-hover:rotate-45 text-amber-400" />
+      ) : (
+        <FiMoon className="h-4 w-4 transition-transform duration-500 group-hover:-rotate-12 text-slate-700" />
+      )}
     </button>
-  )
+  );
 }

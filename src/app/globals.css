@@ -1,742 +1,193 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+/* Custom Base & Selection */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-/*  Tack ANIMATIONS */
+  ::selection {
+    background-color: rgba(6, 182, 212, 0.25);
+    color: inherit;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* PERFORMANCE-OPTIMIZED SUBTLE ANIMATIONS */
+
+/* Tech Track Marquee */
 .tech-marquee {
   width: 100%;
   overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .tech-track {
   display: flex;
   width: max-content;
-  animation: techScroll 45s linear infinite;
+  animation: techScroll 35s linear infinite;
+  will-change: transform;
 }
 
 .tech-set {
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 24px 20px;
+  gap: 28px;
+  padding: 16px 14px;
   flex-shrink: 0;
 }
 
-/* Pause when mouse is over the entire marquee */
 .tech-marquee:hover .tech-track {
   animation-play-state: paused;
 }
 
-/* Infinite horizontal movement */
 @keyframes techScroll {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
-
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-/* Background glow animations */
-.tech-glow-left {
-  animation: techGlowLeft 12s ease-in-out infinite;
-}
-
-.tech-glow-right {
-  animation: techGlowRight 15s ease-in-out infinite;
-}
-
-@keyframes techGlowLeft {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(80px, -40px);
-  }
-}
-
-@keyframes techGlowRight {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(-60px, 50px);
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-
-  .tech-track,
-  .tech-glow-left,
-  .tech-glow-right {
-    animation: none;
-  }
-}
-
-
-
-/*  HERO ANIMATIONS */
-/*  BACKGROUND GLOW */
-.hero-glow-left {
-  animation: heroGlowLeft 14s ease-in-out infinite;
+/* Subtle, Low-CPU Ambient Drifts */
+.ambient-glow-1 {
+  animation: ambientFloat1 18s ease-in-out infinite;
   will-change: transform;
 }
 
-.hero-glow-right {
-  animation: heroGlowRight 16s ease-in-out infinite;
+.ambient-glow-2 {
+  animation: ambientFloat2 22s ease-in-out infinite;
   will-change: transform;
 }
 
-/* Left Glow Movement */
-@keyframes heroGlowLeft {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
+@keyframes ambientFloat1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
   }
-
   50% {
-    transform: translate(50px, -25px);
+    transform: translate3d(30px, -20px, 0);
   }
 }
 
-/* Right Glow Movement */
-@keyframes heroGlowRight {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
+@keyframes ambientFloat2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
   }
-
   50% {
-    transform: translate(-40px, 30px);
+    transform: translate3d(-25px, 20px, 0);
   }
 }
 
-
-/*  HERO CONTENT ENTRANCE= */
-.hero-fade-up {
+/* Staggered Content Entrances (Hardware-Accelerated) */
+.animate-fade-up {
   opacity: 0;
-  animation: heroFadeUp 0.5s ease-out forwards;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Animation delays */
-.hero-delay-1 {
-  animation-delay: 0s;
-}
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
 
-.hero-delay-2 {
-  animation-delay: 0.1s;
-}
-
-.hero-delay-3 {
-  animation-delay: 0.2s;
-}
-
-.hero-delay-4 {
-  animation-delay: 0.3s;
-}
-
-.hero-delay-5 {
-  animation-delay: 0.4s;
-}
-
-.hero-delay-6 {
-  animation-delay: 0.55s;
-}
-
-
-/* Fade Up */
-@keyframes heroFadeUp {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translate3d(0, 16px, 0);
   }
-
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-/*  AVAILABLE BADGE*/
-.hero-badge {
-  opacity: 0;
-  animation: heroBadgeIn 0.6s ease-out 0.5s forwards;
-}
-
-
-/* Mobile badge */
-@keyframes heroBadgeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-/* PROFILE ENTRANCE */
-.hero-profile {
-  opacity: 0;
-  animation: heroProfileIn 0.8s ease-out 0s forwards;
-}
-
-
-@keyframes heroProfileIn {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-
-/*  DESKTOP BADGE */
-
-@media (min-width: 768px) {
-  .hero-badge {
-    animation-name: heroBadgeDesktopIn;
-  }
-
-  @keyframes heroBadgeDesktopIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-/* ACCESSIBILITY */
-@media (prefers-reduced-motion: reduce) {
-
-  .hero-glow-left,
-  .hero-glow-right,
-  .hero-fade-up,
-  .hero-badge,
-  .hero-profile {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-
-/*  ABOUT SECTION ANIMATIONS */
-.about-animate {
-  opacity: 0;
-  will-change: transform, opacity;
-}
-
-.about-visible .about-heading {
-  animation: aboutHeadingIn 0.6s ease-out forwards;
-}
-
-.about-visible .about-image {
-  animation: aboutImageIn 0.7s ease-out 0.05s forwards;
-}
-
-.about-visible .about-content {
-  animation: aboutContentIn 0.7s ease-out 0.15s forwards;
-}
-
-/*  KEYFRAMES */
-@keyframes aboutHeadingIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes aboutImageIn {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes aboutContentIn {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/*  FLOATING REACT BADGE  */
-.about-react-badge {
-  animation: reactBadgeFloat 4s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes reactBadgeFloat {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/*  FLOATING NEXT BADGE */
-.about-next-badge {
-  animation: nextBadgeFloat 3.5s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes nextBadgeFloat {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(8px);
-  }
-}
-
-/*  READ MORE Framer Motion replacement */
+/* Smooth Accordion / Read More */
 .about-read-more {
-  animation: aboutReadMore 0.35s ease-out forwards;
+  animation: readMoreExpand 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   overflow: hidden;
 }
 
-@keyframes aboutReadMore {
+@keyframes readMoreExpand {
   from {
     opacity: 0;
     max-height: 0;
-    transform: translateY(-8px);
+    transform: translate3d(0, -6px, 0);
   }
-
   to {
     opacity: 1;
-    max-height: 300px;
-    transform: translateY(0);
+    max-height: 250px;
+    transform: translate3d(0, 0, 0);
   }
 }
 
-/*  MOBILE */
-@media (max-width: 767px) {
-  .about-image {
-    animation-delay: 0.05s;
-  }
-
-  .about-content {
-    animation-delay: 0.1s;
-  }
-}
-
-/*  REDUCED MOTION */
-@media (prefers-reduced-motion: reduce) {
-
-  .about-animate,
-  .about-react-badge,
-  .about-next-badge,
-  .about-read-more {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Featured PROJECT ANIMATIONS */
-/* Header fade + slide */
-.project-header {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: projectFadeUp 0.4s ease forwards;
-}
-
-/* Card animation */
-.project-card {
-  opacity: 0;
-  transform: translateY(25px);
-  animation: projectFadeUp 0.4s ease forwards;
-}
-
-/* Card hover replacement of framer whileHover */
-.project-card:hover {
-  transform: translateY(-6px);
-}
-
-/* Smooth animation */
-.project-card,
-.project-header {
-  will-change: transform, opacity;
-}
-
-@keyframes projectFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Glow animation replacement */
-.animate-project-glow-left {
-  animation: glowLeft 8s ease-in-out infinite;
-}
-
-.animate-project-glow-right {
-  animation: glowRight 8s ease-in-out infinite;
-}
-
-@keyframes glowLeft {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(40px, 30px);
-  }
-}
-
-@keyframes glowRight {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(-40px, -30px);
-  }
-}
-
-
-/*  SKILLS CSS ANIMATION */
-
-/* Header animation */
-.skills-header {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: skillsFadeUp .6s ease forwards;
-}
-
-/* Category grid */
-.skill-card {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: skillsFadeUp .5s ease forwards;
-}
-
-/* Card hover */
-.skill-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Mini card hover replacement */
-.mini-skill-card:hover {
-  transform: scale(1.02);
-}
-
-/* Progress bar */
-.skills-visible .progress-bar {
+/* Progress Fill */
+.skills-visible .progress-bar,
+.education-visible .education-progress-bar {
   width: 0;
-  animation: progressFill 1s ease forwards;
-}
-
-@keyframes skillsFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: progressFill 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes progressFill {
   from {
     width: 0;
   }
-
   to {
-    width: var(--progress);
+    width: var(--progress, 100%);
   }
 }
 
-
-/*  PROJECT DETAILS ANIMATION */
-/* Not Found */
-.not-found-card {
-  opacity: 0;
-  transform: scale(.8);
-  animation:
-    notFoundShow .5s ease forwards;
-}
-
-@keyframes notFoundShow {
-  from {
-    opacity: 0;
-    transform: scale(.8);
+/* Respect Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Main Card */
-.project-main-card {
-  opacity: 0;
-  transform: translateY(60px);
-  animation:
-    projectShow .7s ease forwards;
-}
-
-@keyframes projectShow {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
+  .tech-track,
+  .ambient-glow-1,
+  .ambient-glow-2 {
+    animation: none !important;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .animate-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
   }
-}
-
-/* Title */
-.project-title {
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: titleShow .5s .2s forwards;
-}
-
-@keyframes titleShow {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Tags */
-.project-tag:hover {
-  transform:
-    translateY(-2px) scale(1.05);
-}
-
-/* Feature cards */
-.feature-card,
-.challenge-card,
-.future-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation:
-    cardShow .5s ease forwards;
-}
-
-@keyframes cardShow {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Background floating glow */
-.project-blue-glow {
-  animation:
-    blueFloat 12s ease-in-out infinite;
-}
-
-.project-cyan-glow {
-  animation:
-    cyanFloat 15s ease-in-out infinite;
-}
-
-@keyframes blueFloat {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(80px, -40px);
-  }
-}
-
-@keyframes cyanFloat {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(-60px, 50px);
-  }
-}
-
-.challenge-card,
-.future-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: cardShow 0.5s ease forwards;
-}
-
-@keyframes cardShow {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* FEATURES SECTION ANIMATIONS */
-.features-header {
-  opacity: 0;
-  animation: featuresHeaderFadeUp 0.6s ease-out forwards;
-}
-
-@keyframes featuresHeaderFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.features-card {
-  opacity: 0;
-  animation: featuresCardFadeUp 0.5s ease-out forwards;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.features-card:hover {
-  transform: translateY(-8px);
-}
-
-@keyframes featuresCardFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/*  EDUCATION SECTION ANIMATIONS */
-.education-animate {
-  opacity: 0;
-  will-change: transform, opacity;
-}
-
-.education-visible .education-header {
-  animation: educationHeaderIn 0.6s ease-out 0.2s forwards;
-}
-
-.education-visible .education-item {
-  animation: educationItemIn 0.6s ease-out forwards;
-  transition: transform 0.3s ease;
-}
-
-.education-visible .education-item:hover {
-  transform: translateY(-5px);
-}
-
-.education-visible .education-progress-bar {
-  width: 0;
-  animation: progressFill 1s ease-out forwards;
-}
-
-@keyframes educationHeaderIn {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes educationItemIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/*  PROJECTS PAGINATION ANIMATION */
-.project-pagination {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: projectFadeUp 0.5s ease-out forwards;
 }

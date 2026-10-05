@@ -6,24 +6,28 @@ import { TfiRocket } from "react-icons/tfi";
 
 const features = [
   {
+    step: "01",
     icon: FiZap,
-    title: "Fast",
-    desc: "Optimized performance with fast loading times and smooth interactions.",
+    title: "Fast Performance",
+    desc: "Optimized Core Web Vitals, minimal bundle footprint, and efficient server-client execution.",
   },
   {
+    step: "02",
     icon: FiSmartphone,
-    title: "Responsive",
-    desc: "Beautiful layouts that adapt perfectly to every screen size.",
+    title: "Responsive Architecture",
+    desc: "Mobile-first layouts built to adapt with flawless fidelity across mobile, tablet, and ultrawide displays.",
   },
   {
+    step: "03",
     icon: FiTarget,
-    title: "Intuitive",
-    desc: "Clean user experiences focused on simplicity and usability.",
+    title: "Intuitive UX & A11y",
+    desc: "Accessible, keyboard-navigable interfaces focused on clean design hierarchy and effortless usability.",
   },
   {
+    step: "04",
     icon: TfiRocket,
-    title: "Dynamic",
-    desc: "Interactive interfaces that bring websites to life with modern motion.",
+    title: "Dynamic Modern Motion",
+    desc: "Subtle, hardware-accelerated micro-interactions that elevate the user experience without sacrificing speed.",
   },
 ];
 
@@ -36,12 +40,10 @@ export default function Features() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          observer.disconnect(); // একবার স্ক্রিনে চলে এলে অবজারভার বন্ধ হবে
+          observer.disconnect();
         }
       },
-      {
-        rootMargin: "200px", // ইউজার সেকশনে পৌঁছানোর ২০০ পিক্সেল আগেই লোড শুরু হবে
-      }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -55,109 +57,81 @@ export default function Features() {
     <section
       id="features"
       ref={sectionRef}
-      className="relative min-h-[450px] overflow-hidden bg-slate-50 py-10 transition-colors duration-500 dark:bg-slate-900/60 sm:py-12"
+      className="relative overflow-hidden bg-[#fafafa] dark:bg-slate-950 py-20 transition-colors duration-500"
     >
-      {/* ইউজার স্ক্রল করে কাছাকাছি আসার পরই শুধুমাত্র ভারি DOM ও অ্যানিমেশনগুলো লোড হবে */}
-      {isInView ? (
-        <>
-          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            {/* Top Left Soft Glow */}
-            <div className="absolute -left-32 top-[-160px] h-[420px] w-[420px] rounded-full bg-blue-500/[0.055] blur-[130px] dark:bg-cyan-500/20" />
-            <div className="absolute -right-32 top-[-160px] h-[420px] w-[420px] rounded-full bg-blue-500/[0.055] blur-[130px] dark:bg-cyan-500/10" />
+      {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/3 top-0 h-80 w-80 rounded-full bg-cyan-500/5 blur-[120px] dark:bg-cyan-500/10" />
+      </div>
 
-            {/* Bottom Right Soft Glow */}
-            <div className="absolute -bottom-40 -right-32 h-[430px] w-[430px] rounded-full bg-cyan-500/35 blur-[130px] dark:bg-cyan-500/20" />
-            <div className="absolute -bottom-40 -left-32 h-[430px] w-[430px] rounded-full bg-cyan-500/35 blur-[130px] dark:bg-cyan-500/20" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        {/* HEADER */}
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:border-white/10 dark:bg-slate-900/60 dark:text-cyan-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+            Engineering Philosophy
+          </span>
 
-            {/* Small Center Glow */}
-            <div className="absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.025] blur-[100px] dark:bg-blue-500/25" />
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl md:text-5xl">
+            Building Modern{" "}
+            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              Digital Experiences
+            </span>
+          </h2>
 
-            {/* Very Subtle Grid */}
-            <div className="absolute inset-0 opacity-[0.018] dark:opacity-[0.025] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            Principles that guide my development process: clean architecture, reliable performance, and human-centered design.
+          </p>
+        </div>
 
-            {/* Top Soft Fade */}
-            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-900" />
+        {/* 4-COLUMN CARDS GRID */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
 
-            {/* Bottom Soft Fade */}
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50 to-transparent dark:from-slate-900" />
-          </div>
-
-          {/* CONTENT */}
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-            <div
-              className="features-header mx-auto mb-16 max-w-3xl text-center sm:mb-20"
-            >
-              {/* Label */}
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400">
-                <span className="h-2 w-2 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50" />
-                What I Do Best
-              </span>
-
-              {/* Heading */}
-              <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl md:text-5xl">
-                Building Modern{" "}
-                <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent">
-                  Digital Experiences
-                </span>
-              </h2>
-
-              {/* Description */}
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg sm:leading-8">
-                Creating modern, fast and user-friendly digital experiences
-                with clean design and powerful technology.
-              </p>
-            </div>
-
-            {/* CARDS */}
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-              {features.map((feature, index) => {
-                const Icon = feature?.icon;
-
-                return (
-                  <div
-                    key={feature.title}
-                    style={{ animationDelay: `${index * 0.12}s` }}
-                    className="features-card group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/75 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-blue-300/70 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-950/60 dark:hover:border-blue-900/70 dark:hover:shadow-blue-500/5 sm:p-6"
-                  >
-                    {/* Hover Background */}
-                    <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/[0.07] via-transparent to-cyan-500/[0.05] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                    {/* Top Glow Line */}
-                    <div className="absolute left-8 right-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                    {/* Card Content */}
-                    <div className="relative z-10 flex flex-col items-center text-center">
-                      {/* Icon */}
-                      <div className="relative mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-blue-600 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-blue-200 group-hover:shadow-lg group-hover:shadow-blue-500/10 dark:border-blue-900/40 dark:text-blue-400 dark:group-hover:border-blue-800">
-                        <Icon size={30} />
-
-                        {/* Icon Glow */}
-                        <div className="absolute inset-0 -z-10 rounded-2xl bg-blue-500/10 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-                        {feature.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
-                        {feature.desc}
-                      </p>
+            return (
+              <div
+                key={feature.title}
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/5 dark:border-white/10 dark:bg-slate-900/50 dark:hover:border-cyan-400/40 ${
+                  isInView ? "animate-fade-up opacity-100" : "opacity-0"
+                }`}
+              >
+                {/* Step Index & Icon Row */}
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-900 transition-all duration-300 group-hover:scale-105 group-hover:bg-cyan-500 group-hover:text-white dark:bg-slate-800 dark:text-cyan-400 dark:group-hover:bg-cyan-400 dark:group-hover:text-slate-950">
+                      <Icon className="text-xl" />
                     </div>
-                  </div>
-                );
-              })}
-            </div>
 
-            {/* SECTION DIVIDER */}
-            <div className="mx-auto mt-12 h-px w-3/4 bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent" />
-          </div>
-        </>
-      ) : (
-        /* Layout Shift ঠেকাতে প্লেসহোল্ডার */
-        <div className="h-96 w-full" />
-      )}
+                    <span className="font-mono text-xs font-bold text-slate-400 dark:text-slate-600 group-hover:text-cyan-500 transition-colors">
+                      {feature.step}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                    {feature.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                    {feature.desc}
+                  </p>
+                </div>
+
+                {/* Bottom Hairline Highlight */}
+                <div className="mt-6 h-0.5 w-8 rounded-full bg-slate-200 dark:bg-slate-800 group-hover:w-full group-hover:bg-cyan-500 dark:group-hover:bg-cyan-400 transition-all duration-500" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Section Divider */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-slate-200 dark:via-white/10 to-transparent" />
     </section>
   );
 }

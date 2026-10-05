@@ -11,7 +11,7 @@ const education = [
     period: "2023 — Present",
     status: "In Progress",
     description:
-      "Currently pursuing undergraduate studies in Economics. Developing analytical skills, critical thinking, and problem-solving abilities.",
+      "Currently pursuing undergraduate studies in Economics. Developing analytical rigor, quantitative problem-solving, critical evaluation, and structured logic that strongly reinforce software engineering principles.",
   },
   {
     degree: "Higher Secondary Certificate (HSC)",
@@ -20,20 +20,16 @@ const education = [
     period: "2021 — 2022",
     status: "Completed",
     description:
-      "Completed higher secondary education, building a strong foundation in academic knowledge, communication skills, and critical thinking.",
+      "Completed higher secondary education, building strong fundamentals in academic disciplines, logic, written communication, and analytical thinking.",
   },
 ];
 
-const PROGRAM_LENGTH_YEARS = 6;
+const PROGRAM_LENGTH_YEARS = 4;
 
 function getProgress(startYear) {
   const now = new Date();
-  const elapsed =
-    now.getFullYear() - startYear + now.getMonth() / 12;
-  return Math.min(
-    1,
-    Math.max(0.04, elapsed / PROGRAM_LENGTH_YEARS)
-  );
+  const elapsed = now.getFullYear() - startYear + now.getMonth() / 12;
+  return Math.min(1, Math.max(0.15, elapsed / PROGRAM_LENGTH_YEARS));
 }
 
 export default function Education() {
@@ -41,12 +37,16 @@ export default function Education() {
   const [showAnimation, setShowAnimation] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setShowAnimation(true);
-        observer.disconnect();
-      }
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowAnimation(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
     if (educationRef.current) observer.observe(educationRef.current);
     return () => observer.disconnect();
   }, []);
@@ -55,155 +55,99 @@ export default function Education() {
     <section
       id="education"
       ref={educationRef}
-      className={`scroll-mt-24 relative overflow-hidden bg-slate-50 px-6 py-10 text-slate-800 transition-colors duration-500 dark:bg-slate-900/80 dark:text-slate-200 sm:py-12 ${
+      className={`scroll-mt-24 relative overflow-hidden bg-[#fafafa] py-20 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-200 ${
         showAnimation ? "education-visible" : ""
       }`}
     >
-
-      <div className=" absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-      
-      
-      {/* BACKGROUND */}
+      {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Soft Light Glow */}
-        <div className="absolute left-1/2 top-20 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-white/40 blur-[120px] dark:bg-blue-600/20" />
-
-        {/* Top Left Blue Glow */}
-        <div className="absolute -left-32 top-[-160px] h-[420px] w-[420px] rounded-full bg-blue-500/[0.055] blur-[130px] dark:bg-blue-500/10" />
-
-        {/* Bottom Right Cyan Glow */}
-        <div className="absolute -bottom-40 -right-32 h-[430px] w-[430px] rounded-full bg-cyan-500/[0.05] blur-[130px] dark:bg-blue-500/20" />
-
-        {/* Center Glow */}
-        <div className="absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.025] blur-[100px] dark:bg-blue-500/20" />
-
-        {/* Very Subtle Grid */}
-        <div className="absolute inset-0 opacity-[0.018] dark:opacity-[0.025] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
-
-        {/* Top Fade */}
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-900" />
-
-        {/* Bottom Fade */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50 to-transparent dark:from-slate-900" />
+        <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-cyan-500/5 blur-[120px] dark:bg-cyan-500/10" />
       </div>
 
-      {/* CONTENT*/}
-      <div className="relative mx-auto max-w-4xl">
-        {/* Header */}
-        <div
-          className="education-header education-animate mb-12"
-        >
-          {/* Heading Row */}
-          <div className="flex items-center gap-3">
-            <span className="h-[3px] w-10 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 shadow-sm shadow-cyan-500/30" />
+      <div className="relative mx-auto max-w-4xl px-6 lg:px-8">
+        {/* HEADER */}
+        <div className="mb-14 text-center sm:text-left">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:border-white/10 dark:bg-slate-900/60 dark:text-cyan-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+            Academic Background
+          </span>
 
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-              Educational{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                Qualification
-              </span>
-            </h2>
-          </div>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+            Educational{" "}
+            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              Qualifications
+            </span>
+          </h2>
 
-          {/* Description */}
-          <p className="mt-4 max-w-lg text-sm leading-6 text-slate-500 dark:text-slate-400 sm:text-base">
-            My academic journey and educational background.
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            Formal academic background supporting analytical reasoning and structured thinking.
           </p>
         </div>
 
-        {/* EDUCATION ENTRIES */}
+        {/* TIMELINE ITEMS */}
         <div className="space-y-6">
           {education.map((item, index) => {
             const progress = getProgress(item.startYear);
+            const isInProgress = item.status === "In Progress";
 
             return (
               <div
-                key={index}
-                style={{ animationDelay: `${index * 0.1}s` }}
-                className="education-item education-animate group relative"
+                key={item.degree}
+                style={{ animationDelay: `${index * 120}ms` }}
+                className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/80 p-6 sm:p-8 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/5 dark:border-white/10 dark:bg-slate-900/50 dark:hover:border-cyan-400/40"
               >
-                {/* Card Ambient Glow */}
-                <div className="absolute -inset-1 rounded-[28px] bg-gradient-to-tr from-blue-600 via-cyan-500 to-blue-400 opacity-[0.06] blur-lg transition-all duration-500 group-hover:opacity-[0.16]" />
+                <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+                  {/* Icon Badge */}
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-cyan-600 transition-all duration-300 group-hover:scale-105 group-hover:bg-cyan-500 group-hover:text-white dark:bg-slate-800 dark:text-cyan-400 dark:group-hover:bg-cyan-400 dark:group-hover:text-slate-950">
+                    <FaGraduationCap className="text-xl" />
+                  </div>
 
-                {/* Card */}
-                <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/75 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 group-hover:border-blue-300/70 group-hover:shadow-xl group-hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-950/60 dark:group-hover:border-blue-900/70 dark:group-hover:shadow-blue-500/5 sm:p-8">
-                  {/* Hover Background */}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/[0.06] via-transparent to-cyan-500/[0.04] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  {/* Body Content */}
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                      <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        {item.degree}
+                      </h3>
 
-                  {/* Top Highlight */}
-                  <div className="absolute left-10 right-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                  <div className="relative z-10 flex flex-col gap-6 sm:flex-row sm:items-start">
-                    {/* Icon Badge */}
-                    <div className="shrink-0">
-                      <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-blue-600 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-blue-200 group-hover:shadow-lg group-hover:shadow-blue-500/10 dark:border-blue-900/40 dark:text-blue-400 dark:group-hover:border-blue-800">
-                        <FaGraduationCap size={23} />
-
-                        {/* Icon Glow */}
-                        <div className="absolute inset-0 -z-10 rounded-2xl bg-blue-500/10 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
-                      </div>
+                      <span
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                          isInProgress
+                            ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
+                            : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
+                        }`}
+                      >
+                        {item.status}
+                      </span>
                     </div>
 
-                    {/* Content */}
-                    <div className="min-w-0 flex-1">
-                      {/* Title + Status */}
-                      <div className="mb-1 flex flex-wrap items-center gap-3">
-                        <h3 className="text-lg font-bold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400 sm:text-xl">
-                          {item.degree}
-                        </h3>
+                    <p className="text-xs sm:text-sm font-medium text-cyan-600 dark:text-cyan-400 font-mono">
+                      {item.institute} · {item.period}
+                    </p>
 
-                        {item.status && (
-                          <span
-                            className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${
-                              item.status === "In Progress"
-                                ? "border-amber-200 bg-amber-500/10 text-amber-600 dark:border-amber-900/40 dark:text-amber-400"
-                                : "border-emerald-200 bg-emerald-500/10 text-emerald-600 dark:border-emerald-900/40 dark:text-emerald-400"
-                            }`}
-                          >
-                            {item.status}
+                    <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                      {item.description}
+                    </p>
+
+                    {/* Progress track if in progress */}
+                    {isInProgress && (
+                      <div className="mt-5">
+                        <div className="mb-2 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                          <span>Academic Timeline Progress</span>
+                          <span className="font-mono font-semibold text-cyan-600 dark:text-cyan-400">
+                            {Math.round(progress * 100)}%
                           </span>
-                        )}
-                      </div>
-
-                      {/* Institute */}
-                      <p className="font-mono text-sm font-semibold text-blue-600 dark:text-blue-400">
-                        {item.institute}
-                      </p>
-
-                      {/* Description */}
-                      <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
-                        {item.description}
-                      </p>
-
-                      {/* Progress */}
-                      {item.status === "In Progress" && (
-                        <div className="mt-6">
-                          {/* Period */}
-                          <div className="mb-2 flex items-center justify-between text-xs font-medium text-slate-500 dark:text-slate-400">
-                            <span>{item.period}</span>
-
-                            <span className="font-semibold text-cyan-600 dark:text-cyan-400">
-                              {Math.round(progress * 100)}%
-                            </span>
-                          </div>
-
-                          {/* Progress Track */}
-                          <div className="relative h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                            {/* Progress Fill */}
-                            <div
-                              style={{
-                                "--progress": `${progress * 100}%`,
-                                animationDelay: "0.2s"
-                              }}
-                              className="education-progress-bar absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-cyan-400"
-                            />
-
-                            {/* Shine */}
-                            <div className="absolute inset-y-0 right-0 w-10 bg-white/20 blur-sm" />
-                          </div>
                         </div>
-                      )}
-                    </div>
+
+                        <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+                          <div
+                            style={{
+                              "--progress": `${progress * 100}%`,
+                            }}
+                            className="education-progress-bar h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 transition-all duration-700"
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -211,8 +155,9 @@ export default function Education() {
           })}
         </div>
       </div>
-       {/* DIVIDER */}
-      <div className="absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+
+      {/* Section Divider */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-slate-200 dark:via-white/10 to-transparent" />
     </section>
   );
 }

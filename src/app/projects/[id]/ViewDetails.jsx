@@ -3,123 +3,53 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaGithub, FaExternalLinkAlt, FaServer, FaArrowLeft, FaCheckCircle, FaArrowRight } from "react-icons/fa";
-
-
-/* Reusable action button */
-const ActionButton = ({ href, icon, label, variant = "outline" }) => {
-  if (!href) return null;
-
-  const base =
-    "group/button flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl font-semibold hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary";
-
-  const variants = {
-    outline:
-      "border border-primary/40 text-primary hover:bg-primary hover:text-black dark:hover:text-white",
-    solid: "bg-secondary text-white",
-  };
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${base} ${variants[variant]}`}
-    >
-      <span className="transition group-hover/button:-translate-y-1 group-hover/button:translate-x-1 group-hover/button:rotate-12">
-        {icon}
-      </span>
-
-      {label}
-    </a>
-  );
-};
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaServer,
+  FaArrowLeft,
+  FaArrowRight,
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaRocket,
+} from "react-icons/fa";
 
 const ViewDetails = ({ project }) => {
   const router = useRouter();
 
   if (!project) {
     return (
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-6 dark:bg-slate-950">
-        {/* ================= BACKGROUND ================= */}
-
-        {/* Left Glow */}
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-blue-500/[0.045] blur-[130px] dark:bg-cyan-500/20" />
-
-        {/* Right Glow */}
-        <div className="pointer-events-none absolute -right-40 bottom-0 h-[450px] w-[450px] rounded-full bg-cyan-500/[0.04] blur-[140px] dark:bg-cyan-500/20" />
-
-        {/* Center Glow */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
-
-        {/* Premium Grid */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.025] dark:opacity-[0.035] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
-
-        {/* Top Fade */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/90 to-transparent dark:from-slate-950/90" />
-
-        {/* Bottom Fade */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
-
-        <div
-          className="not-found-card relative z-10 rounded-3xl border border-gray-200 bg-white/70 p-10 text-center shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5"
-        >
-          <h1 className="text-4xl font-bold text-primary">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-6 dark:bg-slate-950">
+        <div className="relative z-10 max-w-md rounded-3xl border border-slate-200/80 bg-white/80 p-10 text-center shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/60">
+          <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white">
             Project Not Found
           </h1>
-
+          <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+            The requested project could not be located in the catalog.
+          </p>
           <Link
-            href="#projects"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-secondary px-7 py-3 text-white transition hover:scale-105"
+            href="/projects"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-slate-950 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-cyan-600 dark:bg-white dark:text-slate-950 dark:hover:bg-cyan-400"
           >
-            <FaArrowLeft />
-            Back To Projects
+            <FaArrowLeft className="text-xs" />
+            <span>Return to Projects</span>
           </Link>
         </div>
-      </section>
+      </main>
     );
   }
 
   return (
-    <article className="relative min-h-screen overflow-hidden bg-white px-6 pb-10 pt-28 dark:bg-slate-950">
-      {/*  BACKGROUND  */}
-
+    <main className="relative min-h-screen overflow-hidden bg-white pt-28 pb-20 dark:bg-slate-950 transition-colors duration-500">
+      {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Animated Blue Glow */}
-        <div
-          className="project-blue-glow absolute left-[-10%] top-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
-        />
-
-        {/* Animated Cyan Glow */}
-        <div
-          className="project-cyan-glow absolute bottom-0 right-[-10%] h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl"
-        />
-
-        {/* Left Side Glow */}
-        <div className="absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-blue-500/[0.045] blur-[130px] dark:bg-cyan-500/20" />
-
-        {/* Right Side Glow */}
-        <div className="absolute -right-40 bottom-0 h-[450px] w-[450px] rounded-full bg-cyan-500/[0.04] blur-[140px] dark:bg-cyan-500/20" />
-
-        {/* Soft Center Glow */}
-        <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
-
-        {/* Premium Grid — Hero-এর একই */}
-        <div className="absolute inset-0 opacity-[0.025] dark:opacity-[0.035] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
-
-        {/* Top Fade */}
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/80 to-transparent dark:from-slate-950/80" />
-
-        {/* Bottom Fade */}
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
+        <div className="ambient-glow-1 absolute -left-20 top-20 h-96 w-96 rounded-full bg-cyan-500/5 blur-[130px] dark:bg-cyan-500/10" />
+        <div className="ambient-glow-2 absolute -right-20 bottom-20 h-96 w-96 rounded-full bg-blue-500/5 blur-[130px] dark:bg-blue-600/10" />
       </div>
 
-      {/*  CONTENT */}
-
-      <div className="relative z-10 mx-auto max-w-6xl">
-
-        {/* Back Link */}
-        <div className="flex justify-between">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+        {/* TOP NAVIGATION BREADCRUMBS */}
+        <div className="mb-8 flex items-center justify-between">
           <button
             type="button"
             onClick={() => {
@@ -129,120 +59,133 @@ const ViewDetails = ({ project }) => {
                 router.push("/projects");
               }
             }}
-            className="group mb-6 inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white/70 px-5 py-3 text-gray-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500 hover:shadow-2xl active:scale-95 dark:border-gray-700 dark:bg-white/5 dark:text-gray-300 dark:hover:border-cyan-400"
+            className="group inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-600 shadow-sm backdrop-blur-sm transition-all hover:border-cyan-500/50 hover:text-cyan-600 active:scale-95 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-cyan-400/50 dark:hover:text-cyan-400 cursor-pointer"
           >
-            <FaArrowLeft className="transition-transform duration-300 group-hover:-translate-x-2" />
-            <span>Back to Projects</span>
+            <FaArrowLeft className="text-[10px] transition-transform group-hover:-translate-x-1" />
+            <span>Back</span>
           </button>
 
           <Link
             href="/projects"
-            className="group mb-6 inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white/70 px-5 py-3 text-gray-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500 hover:shadow-2xl active:scale-95 dark:border-gray-700 dark:bg-white/5 dark:text-gray-300 dark:hover:border-cyan-400"
+            className="group inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-600 shadow-sm backdrop-blur-sm transition-all hover:border-cyan-500/50 hover:text-cyan-600 active:scale-95 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-cyan-400/50 dark:hover:text-cyan-400"
           >
-            <span>View All Projects</span>
-            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-2" />
-
+            <span>All Projects</span>
+            <FaArrowRight className="text-[10px] transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* Main Project Card */}
-        <div
-          className="project-main-card group relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/20 bg-white/60 shadow-2xl backdrop-blur-2xl transition-all duration-500 dark:bg-white/[0.06]"
-        >
-          {/* Card Glow */}
-          <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-secondary to-primary opacity-0 blur-3xl transition duration-700 group-hover:opacity-20" />
+        {/* HERO CASE STUDY CARD */}
+        <article className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/50">
+          {/* HEADER DETAILS */}
+          <div className="p-6 sm:p-10 border-b border-slate-200/70 dark:border-white/10">
+            <div className="flex flex-wrap items-center gap-2.5 mb-4">
+              <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400">
+                Case Study
+              </span>
+              <span className="text-xs font-mono text-slate-400 dark:text-slate-500">
+                ID: {project.id}
+              </span>
+            </div>
 
-
-          {/* CONTENT */}
-          <div className="relative p-6 md:p-8">
-            {/* TITLE */}
-            <h1
-              className="project-title font-mono text-3xl font-black text-black dark:text-white md:text-4xl"
-            >
-              {project?.title}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white">
+              {project.title}
             </h1>
 
-            {/* DESCRIPTION */}
-            <p className="mt-4 max-w-3xl text-md leading-relaxed text-gray-700 dark:text-gray-300 md:text-lg">
-              {project?.desc}
+            <p className="mt-4 max-w-3xl text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+              {project.desc}
             </p>
 
-            {/* TECH STACK TAGS */}
-            {project?.tags?.length > 0 && (
-              <div className="mt-6 flex flex-wrap gap-3">
-                {project?.tags?.length > 0 && (
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    {project?.tags?.map((tag, index) => (
-                      <span
-                        key={`${tag}-${index}`}
-                        className="project-tag cursor-default rounded-full border border-blue-600 bg-secondary/10 px-4 py-1.5 text-sm font-semibold text-secondary shadow-sm transition-all duration-300 hover:bg-secondary/20 dark:bg-secondary/20"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
+            {/* TECH TAGS */}
+            {project.tags?.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-lg border border-slate-200/80 bg-slate-50/80 px-3 py-1.5 text-xs font-medium text-slate-700 dark:border-white/10 dark:bg-slate-800/60 dark:text-slate-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             )}
 
-            {/* BUTTONS */}
-            <div className="mt-6 flex flex-wrap gap-6">
-              {project?.live && (
+            {/* ACTION BUTTONS ROW */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              {project.live && (
                 <a
-                  href={project?.live}
+                  href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/button flex items-center justify-center gap-3 rounded-2xl border border-cyan-600 bg-blue-900 px-8 py-4 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
+                  className="group inline-flex items-center gap-2 rounded-xl bg-slate-950 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-cyan-600 hover:-translate-y-0.5 active:scale-95 dark:bg-white dark:text-slate-950 dark:hover:bg-cyan-400"
                 >
-                  <FaExternalLinkAlt className="transition group-hover/button:-translate-y-1 group-hover/button:translate-x-1" />
-                  Live Link
+                  <FaExternalLinkAlt className="text-xs transition-transform group-hover:scale-110" />
+                  <span>Live Platform Demo</span>
                 </a>
               )}
 
-              {project?.clientRepo && (
+              {project.clientRepo && (
                 <a
-                  href={project?.clientRepo}
+                  href={project.clientRepo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/button flex items-center gap-3 rounded-2xl border border-cyan-600 px-7 py-3.5 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
+                  className="group inline-flex items-center gap-2 rounded-xl border border-slate-300/80 bg-white px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-cyan-500 hover:text-cyan-600 hover:-translate-y-0.5 active:scale-95 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-400"
                 >
-                  <FaGithub className="transition group-hover/button:rotate-12" />
-                  Client Repo
+                  <FaGithub className="text-sm transition-transform group-hover:rotate-12" />
+                  <span>Client Codebase</span>
                 </a>
               )}
 
-              {project?.serverRepo && (
+              {project.serverRepo && (
                 <a
-                  href={project?.serverRepo}
+                  href={project.serverRepo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/button flex items-center gap-3 rounded-2xl border border-cyan-600 px-7 py-3.5 font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-black dark:hover:text-white"
+                  className="group inline-flex items-center gap-2 rounded-xl border border-slate-300/80 bg-white px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-cyan-500 hover:text-cyan-600 hover:-translate-y-0.5 active:scale-95 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-400"
                 >
-                  <FaServer className="transition group-hover/button:rotate-12" />
-                  Server Repo
+                  <FaServer className="text-sm transition-transform group-hover:scale-110" />
+                  <span>Backend API Codebase</span>
                 </a>
               )}
             </div>
+          </div>
 
-            {/* KEY FEATURES */}
-            {project?.features?.length > 0 && (
-              <div className="mt-6">
-                <h2 className="mb-6 font-mono text-2xl font-bold text-black dark:text-white md:text-3xl">
-                  Key Features & Implementation
-                </h2>
+          {/* MAIN PREVIEW IMAGE BANNER */}
+          {project.image && (
+            <div className="relative h-64 sm:h-96 md:h-[460px] w-full overflow-hidden border-b border-slate-200/70 bg-slate-100 dark:border-white/10 dark:bg-slate-800">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                priority
+                sizes="(max-width: 1200px) 100vw, 1152px"
+                className="object-cover object-top"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+            </div>
+          )}
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  {project.features.map((feature, index) => (
+          {/* DETAILED SPECIFICATIONS SECTION */}
+          <div className="p-6 sm:p-10 space-y-12">
+            {/* 1. KEY FEATURES */}
+            {project.features?.length > 0 && (
+              <div>
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <FaCheckCircle className="text-base" />
+                  </div>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-white">
+                    Key Features &amp; Implementation
+                  </h2>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {project.features.map((feature, idx) => (
                     <div
-                      key={index}
-                      style={{
-                        animationDelay: `${index * 0.08}s`
-                      }}
-                      className="feature-card group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-green-400/30"
+                      key={idx}
+                      className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-slate-50/70 p-4 transition-all duration-300 hover:border-emerald-500/40 hover:bg-white dark:border-white/5 dark:bg-slate-800/40 dark:hover:border-emerald-400/40"
                     >
-                      <FaCheckCircle className="mt-1 shrink-0 text-xl text-green-500 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />
-
-                      <p className="text-sm leading-relaxed text-gray-700 transition-transform duration-300 group-hover:translate-x-1 dark:text-gray-300 md:text-base">
+                      <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-emerald-500" />
+                      <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                         {feature}
                       </p>
                     </div>
@@ -251,142 +194,112 @@ const ViewDetails = ({ project }) => {
               </div>
             )}
 
-            {/* CHALLENGES & FUTURE PLANS */}
-            <div className="grid gap-10 pt-5 md:grid-cols-2">
-              {/* CHALLENGES */}
-              {project?.challenges?.length > 0 && (
-                <div>
-                  <h2 className="mb-6 font-mono text-2xl font-bold text-black dark:text-white md:text-3xl">
-                    Challenges Faced
+            {/* 2. CHALLENGES & ARCHITECTURAL SOLUTIONS */}
+            {project.challenges?.length > 0 && (
+              <div>
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                    <FaExclamationTriangle className="text-base" />
+                  </div>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-white">
+                    Technical Challenges &amp; Solutions
                   </h2>
+                </div>
 
-                  <div className="space-y-5">
-                    {project.challenges.map((challenge, index) => (
-                      <div
-                        key={index}
-                        style={{
-                          animationDelay: `${index * 0.08}s`
-                        }}
-                        className="challenge-card group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-red-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-red-400/30"
-                      >
-                        <FaCheckCircle className="mt-1 shrink-0 text-xl text-red-500 transition-transform duration-300 group-hover:scale-110" />
+                <div className="space-y-3">
+                  {project.challenges.map((challenge, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-slate-50/70 p-4 transition-all duration-300 hover:border-amber-500/40 hover:bg-white dark:border-white/5 dark:bg-slate-800/40 dark:hover:border-amber-400/40"
+                    >
+                      <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-500" />
+                      <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                        {challenge}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-                        <p className="text-sm leading-relaxed text-gray-700 transition-transform duration-300 group-hover:translate-x-1 dark:text-gray-300 md:text-base">
-                          {challenge}
-                        </p>
-                      </div>
-                    ))}
+            {/* 3. FUTURE ROADMAP & SCALABILITY */}
+            {project.futurePlans?.length > 0 && (
+              <div>
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                    <FaRocket className="text-base" />
+                  </div>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-white">
+                    Future Roadmap &amp; Improvements
+                  </h2>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {project.futurePlans.map((plan, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-slate-50/70 p-4 transition-all duration-300 hover:border-cyan-500/40 hover:bg-white dark:border-white/5 dark:bg-slate-800/40 dark:hover:border-cyan-400/40"
+                    >
+                      <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-cyan-500" />
+                      <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                        {plan}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* LIVE PREVIEW EMBED (IF AVAILABLE) */}
+            {project.live && (
+              <div className="pt-6">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <h2 className="text-xl font-bold tracking-tight text-slate-950 dark:text-white">
+                      Interactive Live Viewport
+                    </h2>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Explore the live deployment directly within this container.
+                    </p>
+                  </div>
+
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-600 hover:text-cyan-700 dark:text-cyan-400 dark:hover:text-cyan-300 transition"
+                  >
+                    <span>Open in Full Tab</span>
+                    <FaExternalLinkAlt className="text-[10px]" />
+                  </a>
+                </div>
+
+                <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-lg dark:border-white/10 dark:bg-slate-900">
+                  <div className="flex items-center gap-2 border-b border-slate-200/70 bg-slate-100/70 px-4 py-2.5 dark:border-white/10 dark:bg-slate-800/50">
+                    <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                    <div className="ml-2 flex-1 truncate rounded-md bg-white px-3 py-1 font-mono text-[11px] text-slate-500 dark:bg-slate-950/60 dark:text-slate-400">
+                      {project.live}
+                    </div>
+                  </div>
+
+                  <div className="relative h-[550px] w-full bg-white">
+                    <iframe
+                      src={project.live}
+                      title={`${project.title} live preview`}
+                      className="h-full w-full border-0"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
-              )}
-
-              {/* FUTURE PLANS */}
-              {project?.futurePlans?.length > 0 && (
-                <div>
-                  <h2 className="mb-6 font-mono text-2xl font-bold text-black dark:text-white md:text-3xl">
-                    Future Plans
-                  </h2>
-
-                  <div className="space-y-5">
-                    {project.futurePlans.map((plan, index) => (
-                      <div
-                        key={index}
-                        style={{
-                          animationDelay: `${index * 0.08}s`
-                        }}
-                        className="future-card group flex gap-4 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-blue-400/30"
-                      >
-                        <FaCheckCircle className="mt-1 shrink-0 text-xl text-blue-500 transition-transform duration-300 group-hover:scale-110" />
-
-                        <p className="text-sm leading-relaxed text-gray-700 transition-transform duration-300 group-hover:translate-x-1 dark:text-gray-300 md:text-base">
-                          {plan}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
-
-
-          {/* IMAGE */}
-          {/*
-  {project?.image && (
-    <div className="relative h-[200px] overflow-hidden bg-gray-200 dark:bg-white/5 md:h-[500px]">
-      <Image
-        src={project.image}
-        alt={project?.title || "Project screenshot"}
-        fill
-        priority
-        className="object-cover"
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-      <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-secondary/30 to-transparent" />
-    </div>
-  )}
-*/}
-
-          {/* LIVE PREVIEW */}
-          {project?.live && (
-            <div className="mt-10">
-              <div className="mb-5 flex items-center justify-between px-2">
-                <div>
-                  <h2 className="font-mono text-2xl font-bold text-black dark:text-white md:text-3xl">
-                    Live Preview
-                  </h2>
-
-                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    Explore the project directly from this page.
-                  </p>
-                </div>
-
-                <a
-                  href={project?.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden items-center gap-2 rounded-xl border border-cyan-500/40 px-4 py-2 text-sm font-semibold text-cyan-600 transition hover:bg-cyan-500/10 md:flex"
-                >
-                  Open Full Page
-                  <FaExternalLinkAlt />
-                </a>
-              </div>
-
-              <div className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/80 shadow-2xl dark:border-white/10 dark:bg-white/5">
-                {/* Preview Header */}
-                <div className="flex items-center gap-2 border-b border-gray-200 bg-gray-50 px-5 py-3 dark:border-white/10 dark:bg-white/5">
-                  <span className="h-3 w-3 rounded-full bg-red-400" />
-                  <span className="h-3 w-3 rounded-full bg-yellow-400" />
-                  <span className="h-3 w-3 rounded-full bg-green-400" />
-
-                  <div className="ml-3 flex-1 truncate rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-xs text-gray-500 dark:border-white/10 dark:bg-black/20">
-                    {project?.live}
-                  </div>
-                </div>
-
-                {/* Website Preview */}
-                <div className="relative h-[650px] w-full bg-white">
-                  <iframe
-                    src={project?.live}
-                    title={`${project?.title} Live Preview`}
-                    className="h-full w-full border-0"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-        </div>
+        </article>
       </div>
-
-      {/* Section  */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-    </article>
+    </main>
   );
 };
 
 export default ViewDetails;
-

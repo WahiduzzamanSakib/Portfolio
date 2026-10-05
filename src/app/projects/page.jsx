@@ -2,225 +2,258 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import {
-  FaExternalLinkAlt,
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import projectsData from "../../../public/projects.json";
 
 const ITEMS_PER_PAGE = 6;
 
+const CATEGORIES = ["All", "Full Stack", "Frontend", "E-Commerce", "Web Apps"];
+
 const AllProjectsPage = () => {
-  const [projects] = useState(projectsData);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(
-    projects.length / ITEMS_PER_PAGE
-  );
+  // Filter projects by category
+  const filteredProjects = useMemo(() => {
+    if (selectedCategory === "All") return projectsData;
+    return projectsData.filter((p) => {
+      const tags = (p.tags || []).join(" ").toLowerCase();
+      const title = (p.title || "").toLowerCase();
+      const desc = (p.desc || "").toLowerCase();
+      const content = `${tags} ${title} ${desc}`;
+
+      if (selectedCategory === "Full Stack") {
+        return content.includes("mongodb") || content.includes("express") || content.includes("server") || content.includes("jwt");
+      }
+      if (selectedCategory === "Frontend") {
+        return content.includes("react") || content.includes("tailwind") || content.includes("vite");
+      }
+      if (selectedCategory === "E-Commerce") {
+        return content.includes("cart") || content.includes("store") || content.includes("buying") || content.includes("rent");
+      }
+      if (selectedCategory === "Web Apps") {
+        return content.includes("weather") || content.includes("app") || content.includes("platform");
+      }
+      return true;
+    });
+  }, [selectedCategory]);
+
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE) || 1;
 
   const currentProjects = useMemo(() => {
-    const start =
-      (currentPage - 1) * ITEMS_PER_PAGE;
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredProjects.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredProjects, currentPage]);
 
-    return projects.slice(
-      start,
-      start + ITEMS_PER_PAGE
-    );
-  }, [projects, currentPage]);
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
 
   return (
-    <section
-      // id="projects"
-      className="scroll-mt-24 mt-20 relative isolate overflow-hidden bg-white py-10 dark:bg-slate-950 md:py-12"
-    >
-      {/*  HERO STYLE BACKGROUND */}
-
-      {/* Animated Left Glow */}
-      <div
-        className="project-blue-glow pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-blue-500/10 blur-3xl dark:bg-blue-500/20"
-      />
-
-      {/* Animated Right Glow */}
-      <div
-        className="project-cyan-glow pointer-events-none absolute -right-40 bottom-0 h-[450px] w-[450px] rounded-full bg-cyan-500/10 blur-3xl dark:bg-cyan-500/20"
-      />
-
-      {/* Soft Center Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
-
-      {/* Extra Left Bottom Glow */}
-      <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-blue-500/[0.045] blur-[130px] dark:bg-cyan-500/20" />
-
-      {/* Extra Right Bottom Glow */}
-      <div className="pointer-events-none absolute -right-40 bottom-0 h-[450px] w-[450px] rounded-full bg-cyan-500/[0.04] blur-[140px] dark:bg-cyan-500/10" />
-
-      {/* Premium Grid */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.025] dark:opacity-[0.035] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
-
-      {/* Top Fade */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/90 to-transparent dark:from-slate-950/90" />
-
-      {/* Bottom Fade */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
-
-      {/*  CONTENT*/}
+    <main className="relative min-h-screen overflow-hidden bg-white pt-28 pb-20 dark:bg-slate-950 transition-colors duration-500">
+      {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="ambient-glow-1 absolute -left-20 top-32 h-96 w-96 rounded-full bg-cyan-500/5 blur-[130px] dark:bg-cyan-500/10" />
+        <div className="ambient-glow-2 absolute -right-20 bottom-32 h-96 w-96 rounded-full bg-blue-500/5 blur-[130px] dark:bg-blue-600/10" />
+      </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* HEADER */}
-        <div
-          className="project-header mb-16 flex flex-col items-center text-center"
-        >
-          <h2 className="font-mono text-4xl font-bold tracking-tight text-primary md:text-5xl">
-            My Projects
-          </h2>
-
-          {/* Header Line */}
-          <div className="mt-4 h-1 w-28 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg shadow-cyan-500/20" />
-
-          <p className="mt-4 max-w-xl text-base leading-7 text-on-surface-variant md:text-lg">
-            Latest commercial projects and open source work.
-          </p>
+        {/* TOP NAVIGATION BREADCRUMB */}
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-cyan-600 dark:text-slate-400 dark:hover:text-cyan-400 transition"
+          >
+            <FaArrowLeft className="text-[10px] transition-transform group-hover:-translate-x-1" />
+            <span>Back to Home</span>
+          </Link>
         </div>
 
-        {/* PROJECT GRID */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {currentProjects.map((project, index) => (
-            <article
-              key={project?.title}
-              style={{ animationDelay: `${index * 0.08}s` }}
-              className="project-card group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/60 hover:shadow-xl hover:shadow-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30 dark:hover:border-cyan-400/40"
-            >
-              {/* Card Glow */}
-              <div className="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500/0 via-cyan-400/0 to-purple-500/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-blue-500/10 group-hover:via-cyan-400/10 group-hover:to-purple-500/10 group-hover:opacity-100" />
+        {/* PAGE HEADER */}
+        <div className="mb-12 text-center max-w-3xl mx-auto">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-slate-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:border-white/10 dark:bg-slate-900/60 dark:text-cyan-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+            Archive &amp; Portfolio
+          </span>
 
-              {/* IMAGE */}
-              <div className="relative h-56 overflow-hidden">
-                <Image
-                  src={project?.image}
-                  alt={project?.title}
-                  fill
-                  className="object-cover saturate-50 transition-all duration-700 group-hover:scale-110 group-hover:saturate-100"
-                />
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-5xl">
+            Selected{" "}
+            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              Works &amp; Case Studies
+            </span>
+          </h1>
 
-                {/* Image Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent transition-all duration-500 group-hover:from-black/25" />
+          <p className="mt-4 text-base text-slate-600 dark:text-slate-400">
+            A comprehensive catalog of production web applications, open-source projects, and exploratory systems.
+          </p>
 
-                {/* Image Shine */}
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
-              </div>
+          {/* CATEGORY FILTER TABS */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+            {CATEGORIES.map((category) => {
+              const isSelected = selectedCategory === category;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => handleCategoryChange(category)}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-slate-950 text-white shadow-sm dark:bg-white dark:text-slate-950"
+                      : "border border-slate-200/80 bg-white/80 text-slate-600 hover:border-cyan-500/40 hover:text-slate-950 dark:border-white/10 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:text-white"
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-              {/* CONTENT */}
-              <div className="relative p-7">
-                <h3 className="text-xl font-semibold text-primary transition-colors duration-300 group-hover:text-secondary">
-                  {project?.title}
-                </h3>
+        {/* PROJECTS GRID */}
+        {currentProjects.length > 0 ? (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {currentProjects.map((project, index) => (
+              <article
+                key={project.id || project.title}
+                style={{ animationDelay: `${index * 80}ms` }}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 shadow-sm backdrop-blur-xl transition-all duration-500 hover:-translate-y-1.5 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/5 dark:border-white/10 dark:bg-slate-900/50 dark:hover:border-cyan-400/40"
+              >
+                <div>
+                  {/* BROWSER CHROME FRAME */}
+                  <div className="relative overflow-hidden border-b border-slate-200/70 dark:border-white/10 bg-slate-100/70 dark:bg-slate-800/40">
+                    <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-200/50 dark:border-white/5">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />
+                        <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />
+                        <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />
+                      </div>
+                      <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500 truncate max-w-[150px]">
+                        {project.id}.app
+                      </span>
+                    </div>
 
-                <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-on-surface-variant dark:text-gray-400">
-                  {project?.desc}
-                </p>
+                    <div className="relative h-56 w-full overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
 
-                {/* TAGS */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project?.tags?.slice(0, 4).map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border-2 border-cyan-800 bg-secondary/10 px-3 py-1 text-sm text-secondary transition-all duration-300 hover:scale-110 hover:bg-secondary hover:text-on-secondary dark:border-cyan-400/40 dark:bg-secondary/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {/* CONTENT */}
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      {project.title}
+                    </h2>
 
-                  {project?.tags?.length > 4 && (
-                    <span
-                      className="cursor-pointer rounded-full border-2 border-gray-400 bg-gray-200 px-3 py-1 text-sm text-gray-700 transition-all duration-300 hover:scale-110 dark:border-cyan-400 dark:bg-white/10 dark:text-gray-300"
-                    >
-                      +{project?.tags?.length - 4} More
-                    </span>
-                  )}
+                    <p className="mt-3 line-clamp-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                      {project.desc}
+                    </p>
+
+                    {/* TAGS */}
+                    <div className="mt-5 flex flex-wrap gap-1.5">
+                      {project.tags?.slice(0, 4).map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-lg border border-slate-200/80 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800/60 dark:text-slate-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {project.tags?.length > 4 && (
+                        <span className="rounded-lg border border-slate-200/80 bg-slate-50 px-2 py-1 text-[11px] font-medium text-slate-500 dark:border-white/10 dark:bg-slate-800/60 dark:text-slate-400">
+                          +{project.tags.length - 4}
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
-                {/* BUTTONS */}
-                <div className="mt-8 flex gap-4">
-                  {/*
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-black py-3 text-sm text-primary transition hover:rounded-full hover:border-secondary hover:bg-primary/5 dark:border-cyan-400"
-                  >
-                    <FaExternalLinkAlt />
-                    Live Link
-                  </a>
-                  */}
-
+                {/* ACTIONS */}
+                <div className="px-6 pb-6 pt-2 flex items-center gap-3">
                   <Link
                     href={`/projects/${project.id}`}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white py-3 text-sm font-medium text-slate-900 shadow-sm transition-all duration-300 hover:scale-[1.03] hover:rounded-full hover:border-cyan-400 hover:bg-cyan-50 hover:text-cyan-600 hover:shadow-lg hover:shadow-cyan-400/20 active:scale-95 dark:border-white/20 dark:bg-[#1a1a49] dark:text-white dark:hover:border-cyan-400 dark:hover:bg-cyan-400/10 dark:hover:text-cyan-400"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-slate-950 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:bg-cyan-600 active:scale-95 dark:bg-white dark:text-slate-950 dark:hover:bg-cyan-400"
                   >
-                    View Details
+                    <span>View Case Study</span>
+                    <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
 
-        {/* PAGINATION */}
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${project.title} live demo`}
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-300/80 bg-white text-slate-700 transition-all duration-300 hover:border-cyan-500 hover:text-cyan-600 active:scale-95 dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-cyan-400 dark:hover:text-cyan-400"
+                    >
+                      <FaExternalLinkAlt className="text-xs" />
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-12 text-center dark:border-white/10 dark:bg-slate-900/50">
+            <p className="text-base text-slate-600 dark:text-slate-400">
+              No projects found matching the selected category.
+            </p>
+          </div>
+        )}
+
+        {/* PAGINATION CONTROLS */}
         {totalPages > 1 && (
-          <div
-            className="project-pagination mt-16 flex cursor-pointer items-center justify-center gap-3"
-          >
-            {/* PREVIOUS */}
+          <div className="mt-16 flex items-center justify-center gap-2">
             <button
+              type="button"
               disabled={currentPage === 1}
-              onClick={() =>
-                setCurrentPage((prev) => prev - 1)
-              }
-              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-slate-300 bg-white/70 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-50 hover:text-cyan-500 disabled:cursor-not-allowed disabled:opacity-40 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-cyan-400 dark:hover:bg-cyan-400/10"
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              aria-label="Previous page"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/80 bg-white text-slate-700 shadow-sm transition-all hover:border-cyan-500 hover:text-cyan-600 disabled:opacity-40 disabled:cursor-not-allowed dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-cyan-400"
             >
-              <FaChevronLeft />
+              <FaChevronLeft className="text-xs" />
             </button>
 
-            {/* PAGE NUMBERS */}
-            {Array.from({
-              length: totalPages,
-            }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() =>
-                  setCurrentPage(index + 1)
-                }
-                className={`h-11 w-11 cursor-pointer rounded-full border text-sm font-semibold transition-all duration-300 ${
-  currentPage === index + 1
-    ? "border-cyan-400 bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-cyan-500/20"
-    : "border-slate-300 bg-white/70 text-primary hover:border-cyan-400 hover:bg-cyan-50 hover:text-cyan-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-cyan-400 dark:hover:bg-cyan-400/10"
-} `}
-              >
-                {index + 1}
-              </button>
-            ))}
+            {Array.from({ length: totalPages }).map((_, index) => {
+              const pageNumber = index + 1;
+              const isActive = currentPage === pageNumber;
+              return (
+                <button
+                  key={pageNumber}
+                  type="button"
+                  onClick={() => setCurrentPage(pageNumber)}
+                  className={`h-10 w-10 rounded-xl text-xs font-bold transition-all ${
+                    isActive
+                      ? "bg-slate-950 text-white shadow-sm dark:bg-white dark:text-slate-950"
+                      : "border border-slate-200/80 bg-white text-slate-700 hover:border-cyan-500 hover:text-cyan-600 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-cyan-400"
+                  }`}
+                >
+                  {pageNumber}
+                </button>
+              );
+            })}
 
-            {/* NEXT */}
             <button
+              type="button"
               disabled={currentPage === totalPages}
-              onClick={() =>
-                setCurrentPage((prev) => prev + 1)
-              }
-              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-slate-300 bg-white/70 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-50 hover:text-cyan-500 disabled:cursor-not-allowed disabled:opacity-40 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-cyan-400 dark:hover:bg-cyan-400/10"
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              aria-label="Next page"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/80 bg-white text-slate-700 shadow-sm transition-all hover:border-cyan-500 hover:text-cyan-600 disabled:opacity-40 disabled:cursor-not-allowed dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-cyan-400"
             >
-              <FaChevronRight />
+              <FaChevronRight className="text-xs" />
             </button>
           </div>
         )}
       </div>
-
-      {/* Section Bottom Divider */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-    </section>
+    </main>
   );
 };
 
 export default AllProjectsPage;
-

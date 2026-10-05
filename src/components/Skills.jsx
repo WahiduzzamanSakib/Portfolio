@@ -1,77 +1,92 @@
 "use client";
-import React, { Suspense, useEffect, useRef, useState } from "react";
-import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma, FaDatabase, FaCode, FaServer } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiPostman, SiStripe, SiNpm, SiVercel, SiNetlify } from "react-icons/si";
 
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import {
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+  FaFigma,
+  FaDatabase,
+  FaCode,
+  FaServer,
+} from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiJavascript,
+  SiExpress,
+  SiMongodb,
+  SiPostman,
+  SiStripe,
+  SiNpm,
+  SiVercel,
+  SiNetlify,
+} from "react-icons/si";
 
 const skillCategories = [
   {
     title: "Frontend Development",
-    description: "Building modern, responsive user interfaces",
-    icon: <FaReact />,
+    description: "Building modern, reactive, accessible interfaces",
+    icon: FaReact,
     skills: [
-      { name: "React.js", icon: <FaReact />, level: 90 },
-      { name: "Next.js", icon: <SiNextdotjs />, level: 85 },
-      { name: "Tailwind CSS", icon: <SiTailwindcss />, level: 95 },
-      { name: "JavaScript", icon: <SiJavascript />, level: 90 },
+      { name: "React.js", icon: FaReact, level: 90 },
+      { name: "Next.js 16", icon: SiNextdotjs, level: 85 },
+      { name: "Tailwind CSS", icon: SiTailwindcss, level: 95 },
+      { name: "JavaScript (ES6+)", icon: SiJavascript, level: 90 },
     ],
   },
   {
-    title: "Backend Development",
-    description: "Creating scalable server-side applications",
-    icon: <FaServer />,
+    title: "Backend & APIs",
+    description: "Architecting reliable server-side services",
+    icon: FaServer,
     skills: [
-      { name: "Node.js", icon: <FaNodeJs />, level: 85 },
-      { name: "Express.js", icon: <SiExpress />, level: 85 },
-      { name: "REST APIs", icon: <FaCode />, level: 90 },
-      { name: "JWT Auth", icon: <FaCode />, level: 80 },
-      { name: "Stripe", icon: <SiStripe />, level: 75 },
+      { name: "Node.js", icon: FaNodeJs, level: 85 },
+      { name: "Express.js", icon: SiExpress, level: 85 },
+      { name: "RESTful APIs", icon: FaCode, level: 90 },
+      { name: "JWT Authentication", icon: FaCode, level: 80 },
+      { name: "Stripe Payments", icon: SiStripe, level: 75 },
     ],
   },
   {
-    title: "Database Management",
-    description: "Managing structured and scalable data",
-    icon: <FaDatabase />,
-    skills: [{ name: "MongoDB", icon: <SiMongodb />, level: 85 }],
+    title: "Database Systems",
+    description: "Designing scalable database schemas & models",
+    icon: FaDatabase,
+    skills: [
+      { name: "MongoDB & Mongoose", icon: SiMongodb, level: 85 },
+    ],
   },
   {
-    title: "Tools & Workflow",
-    description: "Development tools and collaboration",
-    icon: <FaGitAlt />,
+    title: "Tools & DevOps",
+    description: "Modern workflows, version control, and CI/CD",
+    icon: FaGitAlt,
     skills: [
-      { name: "Git & GitHub", icon: <FaGithub />, level: 90 },
-      { name: "Figma", icon: <FaFigma />, level: 75 },
-      { name: "Postman", icon: <SiPostman />, level: 70 },
-      { name: "npm", icon: <SiNpm />, level: 85 },
+      { name: "Git & GitHub", icon: FaGithub, level: 90 },
+      { name: "Figma (UI Specs)", icon: FaFigma, level: 75 },
+      { name: "Postman API Testing", icon: SiPostman, level: 75 },
+      { name: "npm Ecosystem", icon: SiNpm, level: 85 },
       {
-        name: "Vercel / Netlify",
-        icon: (
-          <span className="flex items-center gap-1">
-            <SiVercel />
-            <SiNetlify />
-          </span>
-        ),
+        name: "Vercel & Netlify",
+        icon: SiVercel,
         level: 80,
       },
     ],
   },
 ];
 
-
 function SkillsSkeleton() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-10 dark:bg-slate-900/60 sm:py-16">
+    <section className="relative overflow-hidden bg-white py-16 dark:bg-slate-950 sm:py-20">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 space-y-8">
-        <div className="space-y-3">
-          <div className="h-8 w-36 animate-pulse rounded-full bg-slate-200 dark:bg-slate-800" />
-          <div className="h-10 w-64 animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800" />
-          <div className="h-4 w-96 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
+        <div className="space-y-3 mx-auto max-w-2xl text-center">
+          <div className="h-6 w-32 mx-auto animate-pulse rounded-full bg-slate-200 dark:bg-slate-800" />
+          <div className="h-10 w-64 mx-auto animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800" />
         </div>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className="h-72 w-full animate-pulse rounded-3xl bg-slate-200/80 dark:bg-slate-800/50"
+              className="h-64 w-full animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-900"
             />
           ))}
         </div>
@@ -81,7 +96,6 @@ function SkillsSkeleton() {
 }
 
 function SkillsContent() {
-
   const skillsRef = useRef(null);
   const [showAnimation, setShowAnimation] = useState(false);
 
@@ -93,9 +107,7 @@ function SkillsContent() {
           observer.disconnect();
         }
       },
-      {
-        threshold: 0.2,
-      }
+      { threshold: 0.15 }
     );
 
     if (skillsRef.current) {
@@ -105,117 +117,114 @@ function SkillsContent() {
     return () => observer.disconnect();
   }, []);
 
-
-
   return (
     <section
       id="skills"
       ref={skillsRef}
-      className={`relative overflow-hidden bg-slate-50 py-10 transition-colors duration-500 dark:bg-slate-900/60 sm:py-14 ${showAnimation ? "skills-visible" : ""
-        }`}
+      className={`relative overflow-hidden bg-white py-20 transition-colors duration-500 dark:bg-slate-950 ${
+        showAnimation ? "skills-visible" : ""
+      }`}
     >
-      {/* BACKGROUND GLOW EFFECTS */}
+      {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-20 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-white/40 blur-[120px] dark:bg-white/[0.025]" />
-        <div className="absolute -left-32 top-[-160px] h-[420px] w-[420px] rounded-full bg-blue-500/[0.055] blur-[130px] dark:bg-blue-500/20" />
-        <div className="absolute -bottom-40 -right-32 h-[430px] w-[430px] rounded-full bg-cyan-500/[0.05] blur-[130px] dark:bg-blue-500/20" />
-        <div className="absolute inset-0 opacity-[0.018] dark:opacity-[0.025] [background-image:linear-gradient(to_right,#64748b_1px,transparent_1px),linear-gradient(to_bottom,#64748b_1px,transparent_1px)] [background-size:48px_48px]" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-900" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50 to-transparent dark:from-slate-900" />
+        <div className="absolute right-1/4 top-10 h-72 w-72 rounded-full bg-cyan-500/5 blur-[120px] dark:bg-cyan-500/10" />
+        <div className="absolute left-1/4 bottom-10 h-72 w-72 rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/10" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* HEADER SECTION */}
-        <div className="skills-header mb-12 sm:mb-16">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400">
-            <span className="h-2 w-2 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500/50" />
-            Technologies & Tools
+        {/* HEADER */}
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-slate-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:border-white/10 dark:bg-slate-900/60 dark:text-cyan-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+            Technologies &amp; Competencies
           </span>
 
-          <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-            My{" "}
-            <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-500 bg-clip-text text-transparent">
-              Skills
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl md:text-5xl">
+            Technical{" "}
+            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              Proficiency
             </span>
           </h2>
 
-          <div className="mt-4 h-1 w-28 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/20" />
-
-          <p className="mt-3 max-w-xl text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg">
-            Technologies and tools I use to build modern, scalable and user-friendly applications.
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            A specialized toolkit built through continuous practice, modern standards, and commercial web applications.
           </p>
         </div>
 
-        {/* CATEGORY CARDS GRID */}
-        <div className="skills-grid grid gap-8 md:grid-cols-2">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              style={{
-                animationDelay: `${index * 0.15}s`
-              }}
-              className="skill-card group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/75 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-blue-300/70 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-950/60 dark:hover:border-blue-900/70 dark:hover:shadow-blue-500/5 sm:p-8"
-            >
-              {/* Card Hover Glow Header */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-500/[0.04] via-transparent to-blue-500/[0.03] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              <div className="absolute left-8 right-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        {/* CATEGORY GRID */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {skillCategories.map((category, index) => {
+            const CategoryIcon = category.icon;
 
-              {/* Big Card Header (Category) */}
-              <div className="relative mb-6 flex items-center gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-100 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 text-2xl text-cyan-500 shadow-sm transition-transform duration-300 group-hover:scale-105 dark:border-cyan-900/40 dark:text-cyan-400">
-                  {category.icon}
-                </div>
+            return (
+              <div
+                key={category.title}
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/5 dark:border-white/10 dark:bg-slate-900/50 dark:hover:border-cyan-400/40 sm:p-7 ${
+                  showAnimation ? "animate-fade-up opacity-100" : "opacity-0"
+                }`}
+              >
                 <div>
-                  <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
-                    {category.title}
-                  </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 sm:text-sm">
-                    {category.description}
-                  </p>
-                </div>
-              </div>
-
-              {/* MINI SKILL CARDS GRID */}
-              <div className="relative grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {category.skills.map((skill, i) => (
-                  <div
-                    key={i}
-                    className="mini-skill-card flex flex-col justify-between rounded-2xl border border-slate-200/60 bg-slate-50/70 p-4 transition-all duration-300 hover:border-cyan-500/40 hover:bg-white hover:shadow-md dark:border-slate-800/80 dark:bg-slate-900/50 dark:hover:border-cyan-500/40 dark:hover:bg-slate-900"
-                  >
-                    {/* Top Row: Icon, Name & Percentage */}
-                    <div>
-                      <div className="flex items-center justify-between gap-2">
-                        <div className="flex items-center gap-2.5 font-semibold text-slate-800 dark:text-slate-200">
-                          <span className="text-lg text-cyan-500 dark:text-cyan-400">
-                            {skill.icon}
-                          </span>
-                          <span className="text-sm">{skill.name}</span>
-                        </div>
-                        <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400">
-                          {skill.level}%
-                        </span>
-                      </div>
+                  {/* Category Header */}
+                  <div className="mb-6 flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-cyan-600 transition-all duration-300 group-hover:scale-105 group-hover:bg-cyan-500 group-hover:text-white dark:bg-slate-800 dark:text-cyan-400 dark:group-hover:bg-cyan-400 dark:group-hover:text-slate-950">
+                      <CategoryIcon className="text-2xl" />
                     </div>
-
-                    {/* Progress Bar Inside Mini Card */}
-                    <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                      <div
-                        style={{
-                          "--progress": `${skill.level}%`,
-                          animationDelay: `${i * 0.1}s`
-                        }}
-                        className="progress-bar h-full rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500"
-                      />
+                    <div>
+                      <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+                        {category.title}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        {category.description}
+                      </p>
                     </div>
                   </div>
-                ))}
+
+                  {/* Skills List in Category */}
+                  <div className="space-y-4">
+                    {category.skills.map((skill) => {
+                      const SkillIcon = skill.icon;
+                      return (
+                        <div
+                          key={skill.name}
+                          className="rounded-xl border border-slate-100 bg-slate-50/70 p-3.5 transition-all duration-200 hover:border-cyan-500/30 hover:bg-white dark:border-white/5 dark:bg-slate-800/40 dark:hover:border-cyan-400/30 dark:hover:bg-slate-800/70"
+                        >
+                          <div className="flex items-center justify-between text-xs font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                            <div className="flex items-center gap-2.5">
+                              <span className="text-base text-cyan-600 dark:text-cyan-400">
+                                <SkillIcon />
+                              </span>
+                              <span>{skill.name}</span>
+                            </div>
+                            <span className="font-mono text-cyan-600 dark:text-cyan-400">
+                              {skill.level}%
+                            </span>
+                          </div>
+
+                          {/* Subtle Micro-Progress Bar */}
+                          <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700/60">
+                            <div
+                              style={{
+                                "--progress": `${skill.level}%`,
+                              }}
+                              className="progress-bar h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 transition-all duration-700"
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
-      {/* SECTION DIVIDER */}
-        <div className=" absolute bottom-0 left-1/2 h-1 w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+
+      {/* Section Divider */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-slate-200 dark:via-white/10 to-transparent" />
     </section>
   );
 }
