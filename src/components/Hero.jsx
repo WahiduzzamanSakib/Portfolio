@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 
 const typeWriterWords = [
   "Frontend Developer",
-  "React & Next.js Developer",
+  "React Developer", 
+  "Next.js Developer",
   "MERN Stack Developer",
 ];
 
@@ -113,9 +114,12 @@ const Hero = () => {
           </h1>
 
           {/* Dynamic Role Subheading */}
-          <div className="animate-fade-up delay-400 mt-4 flex items-center justify-center gap-2 text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300 lg:justify-start">
-            <span className="text-slate-500 dark:text-slate-400 font-normal">I build as a</span>
-            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text font-mono font-bold text-transparent">
+          <div className="animate-fade-up delay-400 mt-4 flex min-h-[48px] w-full items-center justify-center gap-2 text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300 lg:justify-start">
+            <span className="shrink-0 text-slate-500 dark:text-slate-400 font-normal">
+              I build as a
+            </span>
+
+            <span className="inline-block w-[360px] shrink-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text font-mono font-bold text-transparent">
               <TypeWriter />
             </span>
           </div>
@@ -130,7 +134,7 @@ const Hero = () => {
             <span className="font-semibold text-slate-900 dark:text-slate-200">
               Tailwind CSS
             </span>
-            . Backed by a full MERN stack foundation with Node.js, Express, and MongoDB.
+            . Backend by a full MERN stack foundation with Node.js, Express, and MongoDB.
           </p>
 
           {/* Call-to-Action Buttons */}
@@ -214,7 +218,7 @@ const Hero = () => {
             </div>
 
             {/* Floating Spec Pill: Experience */}
-            <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 dark:border-white/10 dark:bg-slate-900/95">
+            {/* <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 dark:border-white/10 dark:bg-slate-900/95">
               <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-bold text-xs">
                 1+
               </div>
@@ -222,15 +226,15 @@ const Hero = () => {
                 <p className="text-[11px] font-bold text-slate-900 dark:text-white leading-tight">Year Exp.</p>
                 <p className="text-[9px] text-slate-500 dark:text-slate-400">Web Development</p>
               </div>
-            </div>
+            </div> */}
 
             {/* Floating Spec Pill: Tech Stack */}
-            <div className="absolute -top-4 -right-4 hidden sm:flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 dark:border-white/10 dark:bg-slate-900/95">
+            {/* <div className="absolute -top-4 -right-4 hidden sm:flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 dark:border-white/10 dark:bg-slate-900/95">
               <span className="h-2 w-2 rounded-full bg-blue-500 animate-ping" />
               <span className="text-[11px] font-mono font-semibold text-slate-800 dark:text-slate-200">
                 Next.js & React 19
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const certifications = [
     batch: "Batch 13",
     period: "Jan 2026 — Jul 2026",
     description:
-      "Comprehensive full-stack curriculum completed with excellence, covering modern JavaScript (ES6+), React.js, Next.js, Node.js, Express.js, MongoDB, JWT authentication, and AI-assisted workflows.",
+      "Comprehensive MERN-stack curriculum completed with excellence, covering modern JavaScript (ES6+), React.js, Next.js, Node.js, Express.js, MongoDB, JWT authentication, and AI-assisted workflows.",
     certUrl: "/sss.PNG",
   },
 ];

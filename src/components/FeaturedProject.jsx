@@ -29,7 +29,7 @@ const FeaturedProjectsPage = () => {
             <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl md:text-5xl">
               Featured{" "}
               <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                Case Studies
+                Projects
               </span>
             </h2>
 
@@ -59,16 +59,7 @@ const FeaturedProjectsPage = () => {
                 {/* PREVIEW CONTAINER WITH BROWSER CHROME HEADER */}
                 <div className="relative overflow-hidden border-b border-slate-200/70 dark:border-white/10 bg-slate-100/70 dark:bg-slate-800/40">
                   {/* Subtle Browser Window Dots */}
-                  <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-200/50 dark:border-white/5">
-                    <div className="flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />
-                      <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />
-                      <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />
-                    </div>
-                    <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500 truncate max-w-[160px]">
-                      {project.id}.app
-                    </span>
-                  </div>
+                 
 
                   {/* Image Viewport */}
                   <div className="relative h-56 w-full overflow-hidden">
@@ -121,7 +112,7 @@ const FeaturedProjectsPage = () => {
                   href={`/projects/${project.id}`}
                   className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-slate-950 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:bg-cyan-600 active:scale-95 dark:bg-white dark:text-slate-950 dark:hover:bg-cyan-400"
                 >
-                  <span>View Case Study</span>
+                  <span>View Details</span>
                   <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
 

@@ -20,7 +20,7 @@ const features = [
   {
     step: "03",
     icon: FiTarget,
-    title: "Intuitive UX & A11y",
+    title: "Intuitive UX ",
     desc: "Accessible, keyboard-navigable interfaces focused on clean design hierarchy and effortless usability.",
   },
   {

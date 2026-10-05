@@ -103,13 +103,11 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
+            <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
               Waheduzzaman
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-pulse" />
             </span>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">
-              Developer & Engineer
-            </span>
+           
           </div>
         </Link>
 

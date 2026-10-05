@@ -1,27 +1,8 @@
 "use client";
 
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import {
-  FaReact,
-  FaNodeJs,
-  FaGitAlt,
-  FaGithub,
-  FaFigma,
-  FaDatabase,
-  FaCode,
-  FaServer,
-} from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiTailwindcss,
-  SiJavascript,
-  SiExpress,
-  SiMongodb,
-  SiPostman,
-  SiStripe,
-  SiNpm,
-  SiVercel,
-  SiNetlify,
+import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma, FaDatabase, FaCode, FaServer,} from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiPostman, SiStripe, SiNpm, SiVercel, SiNetlify,
 } from "react-icons/si";
 
 const skillCategories = [
@@ -37,6 +18,14 @@ const skillCategories = [
     ],
   },
   {
+    title: "Database Systems",
+    description: "Designing scalable database schemas & models",
+    icon: FaDatabase,
+    skills: [
+      { name: "MongoDB ", icon: SiMongodb, level: 85 },
+    ],
+  },
+  {
     title: "Backend & APIs",
     description: "Architecting reliable server-side services",
     icon: FaServer,
@@ -48,14 +37,7 @@ const skillCategories = [
       { name: "Stripe Payments", icon: SiStripe, level: 75 },
     ],
   },
-  {
-    title: "Database Systems",
-    description: "Designing scalable database schemas & models",
-    icon: FaDatabase,
-    skills: [
-      { name: "MongoDB & Mongoose", icon: SiMongodb, level: 85 },
-    ],
-  },
+  
   {
     title: "Tools & DevOps",
     description: "Modern workflows, version control, and CI/CD",

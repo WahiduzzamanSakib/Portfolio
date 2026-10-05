@@ -27,8 +27,7 @@ const Footer = () => {
     ["About", "about"],
     ["Skills", "skills"],
     ["Projects", "projects"],
-    ["Education", "education"],
-    ["Contact", "contact"],
+    // ["Contact", "contact"],
   ];
 
   const scrollToTop = () => {
@@ -40,7 +39,7 @@ const Footer = () => {
 
   return (
     <footer className="w-full border-t border-slate-200/80 bg-white dark:border-white/10 dark:bg-slate-950 transition-colors duration-500">
-      <div className="mx-auto max-w-7xl px-6 md:px-12 py-16">
+      <div className="mx-auto max-w-7xl px-6 md:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
           {/* BRAND COLUMN */}
           <div className="md:col-span-6 lg:col-span-5">
@@ -56,7 +55,7 @@ const Footer = () => {
             </p>
 
             <p className="mt-4 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400 max-w-md">
-              Building high-performance, accessible web applications and full-stack solutions with React.js, Next.js, and modern cloud technologies.
+              Building high-performance, accessible web applications and MERN-stack solutions with React.js, Next.js, and modern cloud technologies.
             </p>
 
             <div className="mt-6 flex items-center gap-2">

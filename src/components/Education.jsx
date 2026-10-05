@@ -24,7 +24,7 @@ const education = [
   },
 ];
 
-const PROGRAM_LENGTH_YEARS = 4;
+const PROGRAM_LENGTH_YEARS = 7;
 
 function getProgress(startYear) {
   const now = new Date();

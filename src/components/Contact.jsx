@@ -161,7 +161,7 @@ function ContactContent() {
                       Direct Phone
                     </p>
                     <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                      +880 1752 187286
+                      Click Hear to Call
                     </p>
                   </div>
                 </a>
@@ -197,7 +197,7 @@ function ContactContent() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
               </span>
-              <span>Available for Frontend &amp; Full-Stack Engagements</span>
+              <span>Available for Frontend &amp; MERN-Stack Engagements</span>
             </div>
           </div>
 

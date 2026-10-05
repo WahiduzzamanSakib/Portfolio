@@ -29,7 +29,7 @@ export default function About() {
     <section
       ref={aboutRef}
       id="about"
-      className={`scroll-mt-24 relative overflow-hidden bg-white py-20 dark:bg-slate-950 transition-colors duration-500 ${
+      className={`scroll-mt-24 relative overflow-hidden bg-white py-10 dark:bg-slate-950 transition-colors duration-500 ${
         showAnimation ? "about-visible" : ""
       }`}
     >
@@ -77,7 +77,7 @@ export default function About() {
 
                   <div className="pointer-events-none absolute bottom-5 left-5 right-5 text-white">
                     <p className="text-xs font-mono uppercase tracking-wider text-cyan-300">
-                      Frontend & Full-Stack Developer
+                      Frontend & MERN-Stack Developer
                     </p>
                     <h3 className="mt-1 text-2xl font-bold tracking-tight">
                       Md. Waheduzzaman
@@ -121,7 +121,7 @@ export default function About() {
                 <span className="font-semibold text-slate-900 dark:text-white">
                   Tailwind CSS
                 </span>
-                . I thrive at the intersection of aesthetic design and robust engineering — turning complex ideas into seamless user experiences.
+                . I thrive at the intersection of aesthetic design and robust engineering - turning complex ideas into seamless user experiences.
               </p>
 
               {showMore && (
