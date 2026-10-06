@@ -78,11 +78,10 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/70 dark:border-white/[0.08] shadow-sm shadow-slate-900/5 dark:shadow-black/20"
-          : "bg-transparent border-b border-transparent"
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/70 dark:border-white/[0.08] shadow-sm shadow-slate-900/5 dark:shadow-black/20"
+        : "bg-transparent border-b border-transparent"
+        }`}
     >
       <div className="flex items-center justify-between h-20 px-6 md:px-12 max-w-7xl mx-auto">
         {/* Brand Logo */}
@@ -101,19 +100,19 @@ const Navbar = () => {
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div> */}
-          <div className="relative h-10 w-10 overflow-hidden rounded-lg sm:rounded-full ring-2 ring-cyan-500/30 group-hover:ring-cyan-500 transition-all duration-300">
-  <Image
-    src="/my-logo.png"
-    alt="Waheduzzaman logo"
-    fill
-    sizes="50px"
-    priority
-    className="object-cover transition-transform duration-500 group-hover:scale-110"
-  />
-</div>
-
+          <div className="relative h-12 w-12 sm:h-10 sm:w-10 overflow-hidden rounded-lg sm:rounded-full ring-2 ring-cyan-500 sm:ring-cyan-500/30 group-hover:ring-cyan-500 transition-all duration-300">
+            <Image
+              src="/my-logo.png"
+              alt="Waheduzzaman logo"
+              fill
+              sizes="(max-width: 639px) 48px, 40px"
+              priority
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </div>
+          
           <div className="hidden sm:flex flex-col">
-            <span className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
+            <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
               Waheduzzaman
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-pulse" />
             </span>
@@ -132,11 +131,10 @@ const Navbar = () => {
                 key={link.href}
                 type="button"
                 onClick={() => handleClick(link.href)}
-                className={`relative px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-200 rounded-full cursor-pointer ${
-                  isActive
-                    ? "text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 dark:bg-cyan-500/15"
-                    : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-white/5"
-                }`}
+                className={`relative px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-200 rounded-full cursor-pointer ${isActive
+                  ? "text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 dark:bg-cyan-500/15"
+                  : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-white/5"
+                  }`}
               >
                 {link.name}
                 {isActive && (
@@ -184,11 +182,10 @@ const Navbar = () => {
                   key={link.href}
                   type="button"
                   onClick={() => handleClick(link.href)}
-                  className={`flex items-center justify-between w-full py-3 px-4 rounded-xl text-sm font-semibold tracking-wide transition-all ${
-                    isActive
-                      ? "bg-cyan-500/10 dark:bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 font-bold"
-                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-white/5 hover:text-slate-950 dark:hover:text-white"
-                  }`}
+                  className={`flex items-center justify-between w-full py-3 px-4 rounded-xl text-sm font-semibold tracking-wide transition-all ${isActive
+                    ? "bg-cyan-500/10 dark:bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 font-bold"
+                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-white/5 hover:text-slate-950 dark:hover:text-white"
+                    }`}
                 >
                   <span>{link.name}</span>
                   {isActive && <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />}
