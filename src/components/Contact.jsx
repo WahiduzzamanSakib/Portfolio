@@ -67,7 +67,7 @@ function ContactContent() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-24 overflow-hidden bg-white py-20 dark:bg-slate-950 transition-colors duration-500"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-14 dark:bg-slate-950 transition-colors duration-500"
     >
       {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

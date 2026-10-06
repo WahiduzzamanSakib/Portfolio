@@ -58,7 +58,7 @@ const skillCategories = [
 
 function SkillsSkeleton() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 dark:bg-slate-950 sm:py-20">
+    <section className="relative overflow-hidden bg-white py-14 dark:bg-slate-950 sm:py-12">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 space-y-8">
         <div className="space-y-3 mx-auto max-w-2xl text-center">
           <div className="h-6 w-32 mx-auto animate-pulse rounded-full bg-slate-200 dark:bg-slate-800" />

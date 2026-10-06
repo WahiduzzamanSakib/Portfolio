@@ -3,16 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  FaGithub,
-  FaExternalLinkAlt,
-  FaServer,
-  FaArrowLeft,
-  FaArrowRight,
-  FaCheckCircle,
-  FaExclamationTriangle,
-  FaRocket,
-} from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaServer, FaArrowLeft, FaArrowRight, FaCheckCircle, FaExclamationTriangle, FaRocket,} from "react-icons/fa";
 
 const ViewDetails = ({ project }) => {
   const router = useRouter();
@@ -78,14 +69,14 @@ const ViewDetails = ({ project }) => {
         <article className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/50">
           {/* HEADER DETAILS */}
           <div className="p-6 sm:p-10 border-b border-slate-200/70 dark:border-white/10">
-            <div className="flex flex-wrap items-center gap-2.5 mb-4">
+            {/* <div className="flex flex-wrap items-center gap-2.5 mb-4">
               <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400">
                 Case Study
               </span>
               <span className="text-xs font-mono text-slate-400 dark:text-slate-500">
                 ID: {project.id}
               </span>
-            </div>
+            </div> */}
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white">
               {project.title}
@@ -119,7 +110,7 @@ const ViewDetails = ({ project }) => {
                   className="group inline-flex items-center gap-2 rounded-xl bg-slate-950 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-cyan-600 hover:-translate-y-0.5 active:scale-95 dark:bg-white dark:text-slate-950 dark:hover:bg-cyan-400"
                 >
                   <FaExternalLinkAlt className="text-xs transition-transform group-hover:scale-110" />
-                  <span>Live Platform Demo</span>
+                  <span>Live Platform</span>
                 </a>
               )}
 
@@ -143,14 +134,14 @@ const ViewDetails = ({ project }) => {
                   className="group inline-flex items-center gap-2 rounded-xl border border-slate-300/80 bg-white px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-cyan-500 hover:text-cyan-600 hover:-translate-y-0.5 active:scale-95 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-400"
                 >
                   <FaServer className="text-sm transition-transform group-hover:scale-110" />
-                  <span>Backend API Codebase</span>
+                  <span>Backend Codebase</span>
                 </a>
               )}
             </div>
           </div>
 
           {/* MAIN PREVIEW IMAGE BANNER */}
-          {project.image && (
+          {/* {project.image && (
             <div className="relative h-64 sm:h-96 md:h-[460px] w-full overflow-hidden border-b border-slate-200/70 bg-slate-100 dark:border-white/10 dark:bg-slate-800">
               <Image
                 src={project.image}
@@ -162,7 +153,7 @@ const ViewDetails = ({ project }) => {
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
             </div>
-          )}
+          )} */}
 
           {/* DETAILED SPECIFICATIONS SECTION */}
           <div className="p-6 sm:p-10 space-y-12">

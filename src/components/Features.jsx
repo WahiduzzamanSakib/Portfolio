@@ -57,7 +57,7 @@ export default function Features() {
     <section
       id="features"
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#fafafa] dark:bg-slate-950 py-20 transition-colors duration-500"
+      className="relative overflow-hidden bg-[#fafafa] dark:bg-slate-950 py-14 transition-colors duration-500"
     >
       {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

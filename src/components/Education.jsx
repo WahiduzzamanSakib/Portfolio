@@ -55,7 +55,7 @@ export default function Education() {
     <section
       id="education"
       ref={educationRef}
-      className={`scroll-mt-24 relative overflow-hidden bg-[#fafafa] py-20 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-200 ${
+      className={`scroll-mt-24 relative overflow-hidden bg-[#fafafa] py-14 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-200 ${
         showAnimation ? "education-visible" : ""
       }`}
     >

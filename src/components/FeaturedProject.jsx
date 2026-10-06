@@ -9,7 +9,7 @@ const FeaturedProjectsPage = () => {
   return (
     <section
       id="projects"
-      className="scroll-mt-24 relative overflow-hidden bg-white py-20 dark:bg-slate-950 md:py-24 transition-colors duration-500"
+      className="scroll-mt-24 relative overflow-hidden bg-white py-16 dark:bg-slate-950 md:py-14 transition-colors duration-500"
     >
       {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -33,8 +33,11 @@ const FeaturedProjectsPage = () => {
               </span>
             </h2>
 
-            <p className="mt-3 text-base text-slate-600 dark:text-slate-400 max-w-xl">
+            {/* <p className="mt-3 text-base text-slate-600 dark:text-slate-400 max-w-xl">
               Production web applications, full-stack architectures, and user-centric digital products.
+            </p> */}
+            <p className="mt-3 text-base text-slate-600 dark:text-slate-400 max-w-xl">
+              Production web Applications, Architectures, and user-centric digital products.
             </p>
           </div>
 

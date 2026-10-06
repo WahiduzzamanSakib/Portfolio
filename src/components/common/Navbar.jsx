@@ -91,7 +91,7 @@ const Navbar = () => {
           className="group flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02]"
           aria-label="Waheduzzaman - Home"
         >
-          <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-cyan-500/30 group-hover:ring-cyan-500 transition-all duration-300">
+          {/* <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-cyan-500/30 group-hover:ring-cyan-500 transition-all duration-300">
             <Image
               src="/my-logo.png"
               alt="Waheduzzaman logo"
@@ -100,14 +100,23 @@ const Navbar = () => {
               priority
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
-          </div>
+          </div> */}
+          <div className="relative h-10 w-10 overflow-hidden rounded-lg sm:rounded-full ring-2 ring-cyan-500/30 group-hover:ring-cyan-500 transition-all duration-300">
+  <Image
+    src="/my-logo.png"
+    alt="Waheduzzaman logo"
+    fill
+    sizes="50px"
+    priority
+    className="object-cover transition-transform duration-500 group-hover:scale-110"
+  />
+</div>
 
-          <div className="flex flex-col">
-            <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
+          <div className="hidden sm:flex flex-col">
+            <span className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
               Waheduzzaman
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-pulse" />
             </span>
-           
           </div>
         </Link>
 

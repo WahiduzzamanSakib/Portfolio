@@ -19,7 +19,7 @@ const techs = [
 
 const TechStack = () => {
   return (
-    <section className="relative overflow-hidden bg-[#fafafa] dark:bg-slate-950 py-16 transition-colors duration-500">
+    <section className="relative overflow-hidden bg-[#fafafa] dark:bg-slate-950 py-10 transition-colors duration-500">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* HEADER */}
         <div className="mb-12 text-center">
@@ -64,9 +64,9 @@ const TechStack = () => {
                   return (
                     <div
                       key={`duplicate-${tech.name}`}
-                      className="group flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/80 px-5 py-3 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/40 hover:shadow-md hover:shadow-cyan-500/5 dark:border-white/10 dark:bg-slate-900/60 dark:hover:border-cyan-400/40 cursor-default"
+                      className="group flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/80 px-8 py-5 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/40 hover:shadow-md hover:shadow-cyan-500/5 dark:border-white/10 dark:bg-slate-900/60 dark:hover:border-cyan-400/40 cursor-default"
                     >
-                      <Icon className={`text-2xl transition-transform duration-300 group-hover:scale-110 ${tech.color}`} />
+                      <Icon className={`text-3xl transition-transform duration-300 group-hover:scale-110 ${tech.color}`} />
                       <span className="text-xs font-semibold tracking-wide text-slate-700 dark:text-slate-300 whitespace-nowrap">
                         {tech.name}
                       </span>

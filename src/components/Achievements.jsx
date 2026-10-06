@@ -56,7 +56,7 @@ export default function Achievements() {
     <section
       id="achievements"
       ref={sectionRef}
-      className={`scroll-mt-24 relative overflow-hidden bg-white py-20 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-200 ${
+      className={`scroll-mt-24 relative overflow-hidden bg-white py-14 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-200 ${
         showAnimation ? "achievements-visible" : ""
       }`}
     >
