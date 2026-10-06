@@ -45,7 +45,8 @@ const FeaturedProjectsPage = () => {
             href="/projects"
             className="group inline-flex items-center gap-2 self-start md:self-auto rounded-full border border-slate-300/80 bg-white/80 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-cyan-50/50 hover:text-cyan-600 active:scale-95 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200 dark:hover:border-cyan-400/50 dark:hover:text-cyan-300"
           >
-            <span>View All Works ({projects.length})</span>
+            <span>View All Works</span>
+            {/* <span>View All Works ({projects.length})</span> */}
             <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>

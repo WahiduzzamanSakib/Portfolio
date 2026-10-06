@@ -140,6 +140,44 @@
     "serverRepo": null,
     "live": "https://wahid-weather.netlify.app"
   },
+{
+  "id": "movie-explorer",
+  "title": "Movie Explorer",
+  "desc": "A responsive movie browsing application where users can explore movies, search for titles, and view detailed movie information through an interactive modal.",
+  "image": "https://i.ibb.co.com/RGHCCzPB/movie-explore.png",
+  "tags": [
+    "JavaScript",
+    "React",
+    "Tailwind CSS",
+    "TVMaze API",
+    "Responsive Design",
+    "Netlify"
+  ],
+  "features": [
+    "Responsive Movie Browsing: Users can explore movies through a clean and fully responsive interface.",
+    "Live Movie Search: Users can search for movies by title and quickly find matching results.",
+    "Movie Listing: Displays movie posters, titles, release years, and ratings in a responsive grid layout.",
+    "Interactive Movie Details: Users can view detailed movie information including poster, backdrop, title, overview, rating, and release date in a modal.",
+    "User-Friendly Navigation: Includes a navbar, hero banner with CTA, movie listing page, and footer.",
+    "Responsive Design: Optimized for mobile, tablet, and desktop screen sizes."
+  ],
+  "challenges": [
+    "Implementing live movie search functionality using data fetched from the TVMaze API.",
+    "Managing and displaying dynamic movie data efficiently in a responsive card-based layout.",
+    "Creating an interactive movie details modal with proper open and close behavior.",
+    "Designing a fully responsive interface that provides a consistent experience across different screen sizes."
+  ],
+  "futurePlans": [
+    "Add advanced movie filtering and sorting options.",
+    "Add user authentication and personalized favorite movie lists.",
+    "Implement movie watchlist functionality.",
+    "Add pagination or infinite scrolling for larger movie collections.",
+    "Improve movie recommendations based on user preferences."
+  ],
+  "clientRepo": "https://github.com/WahiduzzamanSakib/Movie-Explorer",
+   "serverRepo": null,
+  "live": "https://movie-exporerr.netlify.app/"
+},
   {
     "id": "tools-buying",
     "title": "Digital Tools Buying Website",

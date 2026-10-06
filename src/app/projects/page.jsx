@@ -181,7 +181,7 @@ const AllProjectsPage = () => {
                     href={`/projects/${project.id}`}
                     className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-slate-950 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:bg-cyan-600 active:scale-95 dark:bg-white dark:text-slate-950 dark:hover:bg-cyan-400"
                   >
-                    <span>View Case Study</span>
+                    <span>View Details</span>
                     <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
 
