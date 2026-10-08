@@ -110,7 +110,7 @@ const Navbar = () => {
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
-          
+
           <div className="hidden sm:flex flex-col">
             <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
               Waheduzzaman
@@ -127,20 +127,24 @@ const Navbar = () => {
           {navLinks.map((link) => {
             const isActive = active === link.href;
             return (
-              <button
+              <a
                 key={link.href}
-                type="button"
-                onClick={() => handleClick(link.href)}
+                href={`${link.href}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleClick(link.href);
+                }}
                 className={`relative px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-200 rounded-full cursor-pointer ${isActive
                   ? "text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 dark:bg-cyan-500/15"
                   : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-white/5"
                   }`}
               >
                 {link.name}
+
                 {isActive && (
                   <span className="absolute bottom-1 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-cyan-500 dark:bg-cyan-400" />
                 )}
-              </button>
+              </a>
             );
           })}
         </nav>
@@ -178,18 +182,24 @@ const Navbar = () => {
             {navLinks.map((link) => {
               const isActive = active === link.href;
               return (
-                <button
+                <a
                   key={link.href}
-                  type="button"
-                  onClick={() => handleClick(link.href)}
+                  href={`${link.href}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleClick(link.href);
+                  }}
                   className={`flex items-center justify-between w-full py-3 px-4 rounded-xl text-sm font-semibold tracking-wide transition-all ${isActive
-                    ? "bg-cyan-500/10 dark:bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 font-bold"
-                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-white/5 hover:text-slate-950 dark:hover:text-white"
+                      ? "bg-cyan-500/10 dark:bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 font-bold"
+                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-white/5 hover:text-slate-950 dark:hover:text-white"
                     }`}
                 >
                   <span>{link.name}</span>
-                  {isActive && <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />}
-                </button>
+
+                  {isActive && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+                  )}
+                </a>
               );
             })}
 

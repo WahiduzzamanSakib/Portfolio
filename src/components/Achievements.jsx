@@ -56,9 +56,8 @@ export default function Achievements() {
     <section
       id="achievements"
       ref={sectionRef}
-      className={`scroll-mt-24 relative overflow-hidden bg-white py-14 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-200 ${
-        showAnimation ? "achievements-visible" : ""
-      }`}
+      className={`scroll-mt-24 relative overflow-hidden bg-white py-14 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-200 ${showAnimation ? "achievements-visible" : ""
+        }`}
     >
       {/* PERFORMANCE-OPTIMIZED SUBTLE AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -119,14 +118,15 @@ export default function Achievements() {
                   </p>
 
                   <div className="mt-5">
-                    <button
-                      type="button"
-                      onClick={() => setActiveCert(cert)}
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group/btn inline-flex items-center gap-2 rounded-xl border border-slate-300/80 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-800 shadow-sm transition-all hover:border-cyan-500 hover:text-cyan-600 active:scale-95 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-400 cursor-pointer"
                     >
                       <span>Inspect Credential</span>
                       <FaExternalLinkAlt className="text-[10px] transition-transform group-hover/btn:translate-x-0.5" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

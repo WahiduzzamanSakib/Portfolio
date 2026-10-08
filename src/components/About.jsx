@@ -202,7 +202,7 @@ export default function About() {
                   3+
                 </div>
                 <p className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
-                  Production Platforms
+                  Real Projects
                 </p>
               </div>
             </div>

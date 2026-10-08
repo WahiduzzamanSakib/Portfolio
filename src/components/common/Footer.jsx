@@ -74,19 +74,19 @@ const Footer = () => {
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-4">
               Navigation
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5 md:grid-cols-1">
               {links.map(([name, link]) => (
                 <li key={name}>
-                  <button
-                    type="button"
-                    onClick={() => handleClick(link)}
-                    className="group inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600 hover:text-cyan-600 dark:text-slate-400 dark:hover:text-cyan-400 transition cursor-pointer"
+                  <a
+                    href={`#${link}`}
+                    className="group inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600 hover:text-cyan-600 dark:text-slate-400 dark:hover:text-cyan-400 transition-colors cursor-pointer"
                   >
                     <span className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 text-cyan-500">
                       →
                     </span>
+
                     <span>{name}</span>
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
