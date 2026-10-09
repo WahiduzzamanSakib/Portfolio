@@ -121,8 +121,9 @@ export default function Achievements() {
                     <a
                       href={cert.url}
                       target="_blank"
+                      onClick={() => setActiveCert(cert)}
                       rel="noopener noreferrer"
-                      className="group/btn inline-flex items-center gap-2 rounded-xl border border-slate-300/80 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-800 shadow-sm transition-all hover:border-cyan-500 hover:text-cyan-600 active:scale-95 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-400 cursor-pointer"
+                      className="group/btn inline-flex items-center gap-2 rounded-xl border border-slate-300/80 bg-gray-700 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-800 shadow-sm transition-all hover:border-cyan-500 hover:text-cyan-600 active:scale-95 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-400 cursor-pointer"
                     >
                       <span>Inspect Credential</span>
                       <FaExternalLinkAlt className="text-[10px] transition-transform group-hover/btn:translate-x-0.5" />
@@ -136,39 +137,41 @@ export default function Achievements() {
       </div>
 
       {/* CERTIFICATE LIGHTBOX MODAL (Fixed Light Mode White-on-White Text Bug) */}
+
       {activeCert && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-2 sm:p-4 backdrop-blur-md"
           onClick={() => setActiveCert(null)}
         >
           <div
-            className="relative flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-900"
+           className="relative flex max-h-[96vh] w-[90%] sm:w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-900"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Trigger */}
+            {/* Close Button */}
             <button
               type="button"
               onClick={() => setActiveCert(null)}
               aria-label="Close certificate modal"
-              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950/70 text-white backdrop-blur-md transition-transform hover:scale-110 cursor-pointer"
+              className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950/70 text-white backdrop-blur-md transition-transform hover:scale-110 cursor-pointer"
             >
               <FaTimes className="text-sm" />
             </button>
 
-            {/* Certificate Preview Image */}
-            <div className="relative h-[65vh] w-full overflow-hidden bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
+            {/* Full Width Certificate Image */}
+            <div className="relative h-[45vh] sm:h-[75vh] w-full shrink-0 overflow-hidden bg-slate-100 dark:bg-slate-950">
               <Image
                 src={activeCert.certUrl}
                 alt={`${activeCert.title} credential`}
                 fill
-                sizes="(max-width: 768px) 100vw, 800px"
-                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 1152px"
+                className="object-fill"
+                priority
               />
             </div>
 
-            {/* Caption Header - Proper contrast in both light and dark modes */}
-            <div className="border-t border-slate-200 bg-white px-6 py-4 dark:border-white/10 dark:bg-slate-900">
-              <h4 className="text-base font-bold text-slate-950 dark:text-white">
+            {/* Certificate Details */}
+            <div className="border-t border-slate-200 bg-white px-5 py-3 dark:border-white/10 dark:bg-slate-900">
+              <h4 className="text-base font-bold text-white  ">
                 {activeCert.title}
               </h4>
               <p className="text-xs text-slate-500 dark:text-slate-400">
@@ -178,6 +181,8 @@ export default function Achievements() {
           </div>
         </div>
       )}
+
+
 
       {/* Section Divider */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-slate-200 dark:via-white/10 to-transparent" />
