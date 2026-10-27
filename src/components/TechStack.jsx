@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FaJs, FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGithub } from "react-icons/fa";
-import { SiExpress, SiMongodb, SiTailwindcss, SiNextdotjs, SiVercel, SiNetlify } from "react-icons/si";
+import { SiExpress, SiMongodb, SiTailwindcss, SiNextdotjs, SiVercel, SiNetlify, SiGoogle } from "react-icons/si";
 
 const techs = [
   { name: "React.js", icon: FaReact, color: "text-cyan-500" },
@@ -17,6 +17,7 @@ const techs = [
   { name: "GitHub", icon: FaGithub, color: "text-slate-800 dark:text-slate-100" },
   { name: "Vercel", icon: SiVercel, color: "text-slate-900 dark:text-white" },
   { name: "Netlify", icon: SiNetlify, color: "text-teal-500" },
+  // { name: "Google Antigravity", icon: SiGoogle, color: "text-blue-600" },
 ];
 
 const TechStack = () => {

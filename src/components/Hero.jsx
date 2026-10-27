@@ -59,7 +59,8 @@ const socials = [
   },
   {
     name: "Facebook",
-    href: "https://www.facebook.com/md.waheduzzaman.613163",
+    // href: "https://www.facebook.com/md.waheduzzaman.613163", //previous
+    href: "https://www.facebook.com/md.waheduzzamann",
     icon: FaFacebook,
   },
 ];

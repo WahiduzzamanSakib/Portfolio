@@ -106,7 +106,8 @@ const Footer = () => {
                 { name: "GitHub", href: "https://github.com/WahiduzzamanSakib", icon: FaGithub },
                 { name: "LinkedIn", href: "https://www.linkedin.com/in/waheduzzaman-md", icon: FaLinkedin },
                 { name: "Email", href: "mailto:wahidzamanpg@gmail.com", icon: FaEnvelope },
-                { name: "Facebook", href: "https://www.facebook.com/md.waheduzzaman.613163", icon: FaFacebook },
+                { name: "Facebook", href: "https://www.facebook.com/md.waheduzzamann", icon: FaFacebook },
+                // { name: "Facebook", href: "https://www.facebook.com/md.waheduzzaman.613163", icon: FaFacebook },
               ].map((s) => {
                 const Icon = s.icon;
                 return (
