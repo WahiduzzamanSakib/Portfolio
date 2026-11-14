@@ -1,11 +1,12 @@
-"use client";
-
+import { getProjects } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
-import projects from "../../public/projects.json";
 
-const FeaturedProjectsPage = () => {
+
+const FeaturedProjectsPage =async () => {
+const projects = await getProjects();
+
   return (
     <section
       id="projects"
