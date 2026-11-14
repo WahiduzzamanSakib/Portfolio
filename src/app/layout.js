@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL("https://waheduzzaman.vercel.app"),
 
-  title: "Waheduzzaman | MERN Stack Developer",
+  title: "Md Waheduzzaman | MERN Stack Developer",
   description:
     "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
 
