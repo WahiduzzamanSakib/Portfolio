@@ -41,7 +41,7 @@ export const metadata = {
     // ],
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1733,
         height: 907,
         alt: "Md Waheduzzaman - MERN Stack Developer",
@@ -53,11 +53,11 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Waheduzzaman | MERN Stack Developer",
+    title: "Md Waheduzzaman | MERN Stack Developer",
     description:
       "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
     // images: ["/my-logo.png"],
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
 };
 
