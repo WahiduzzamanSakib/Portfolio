@@ -31,23 +31,15 @@ export const metadata = {
       "Portfolio of Md Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
     url: "https://waheduzzaman.vercel.app",
     siteName: "Waheduzzaman Portfolio",
-    // images: [
-    //   {
-    //     url: "/my-logo.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "Waheduzzaman portfolio logo",
-    //   },
-    // ],
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1733,
-        height: 907,
-        alt: "Md Waheduzzaman - MERN Stack Developer",
-        type: "image/png",
+        url: "/my-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Waheduzzaman portfolio",
       },
     ],
+   
     type: "website",
   },
 
@@ -56,8 +48,7 @@ export const metadata = {
     title: "Md Waheduzzaman | MERN Stack Developer",
     description:
       "Portfolio of Md. Waheduzzaman, a MERN Stack Developer building modern, responsive web applications with React, Next.js, and Node.js.",
-    // images: ["/my-logo.png"],
-    images: ["/og-image.jpg"],
+    images: ["/my-logo.png"],
   },
 };
 
