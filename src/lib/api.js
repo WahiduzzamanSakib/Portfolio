@@ -35,3 +35,14 @@ export const getProjects = async () => {
 
   return res.json();
 };
+
+// Get single project by ID
+export const getProjectById = async (projectId) => {
+  const res = await fetch(`${API_URL}/projects/${projectId}`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch project details");
+  }
+
+  return res.json();
+};
