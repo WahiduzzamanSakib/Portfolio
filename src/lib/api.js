@@ -27,7 +27,9 @@
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const getProjects = async () => {
-  const res = await fetch(`${API_URL}/projects`);
+  const res = await fetch(`${API_URL}/projects`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch projects");
@@ -38,7 +40,9 @@ export const getProjects = async () => {
 
 // Get single project by ID
 export const getProjectById = async (projectId) => {
-  const res = await fetch(`${API_URL}/projects/${projectId}`);
+  const res = await fetch(`${API_URL}/projects/${projectId}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch project details");
