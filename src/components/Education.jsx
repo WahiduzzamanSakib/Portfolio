@@ -7,8 +7,8 @@ const education = [
   {
     degree: "Bachelor of Social Science (BSS) in Economics",
     institute: "National University, Bangladesh",
-    startYear: 2023,
-    period: "2023 — Present",
+    startYear: 2024,
+    period: "2024 — Present",
     status: "In Progress",
     description:
       "Currently pursuing undergraduate studies in Economics. Developing analytical rigor, quantitative problem-solving, critical evaluation, and structured logic that strongly reinforce software engineering principles.",
